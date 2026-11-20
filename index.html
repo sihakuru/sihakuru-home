@@ -1,108 +1,454 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sihakuru — Coming soon</title>
-  <meta name="description" content="Sihakuru — a creative studio for brands, hotels and restaurants in Sri Lanka. Our new website is on its way.">
-  <meta name="theme-color" content="#0C0A09">
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAALlklEQVR42u1ba5BV1ZX+1t7n7HPPufeee7sBoY1EeaViChvMID6igNImqXJGKyA+Mj+i8khVlKAxNcmUPFLRgEEHkZoZNRnMzFRG5NFMHhUQAWsckkI7AZ3QYBhmEhFtu8Lt7tu37+vcc/Ze+dH3dhpmUsF+QFv2rjr/uu45+9trfetb315NCc9lfISXwEd8jQIwCsAoAKMAjAIwCsAoAB/dZQ0aQSEgxIXB0RgDY8yFA4CIUCwWEZkLo6YtQXBdF8x8/gEQQqBYLPK1117bvfD2RZ6UQgE0bJtlZhijGSAIIcgYU2nesb148ODBlOd5NNBIoIE0Q0SEIAjwycsvzx86/AYsy4pjOHf/JzCJoqjwF5++Er95662E4zgDioQBRYCUEpVIY/bs2Z5lWaJcLsOyrGE7eSklSqVS+aXdu0vjLhpHc+bMTZbLZRmLxRKzZ882vz7SCs+TiKLo/HKAMUYwMyzLGhYAaieqta7cuWhR8We7dycB6H/4+03Zr9y/vJ6ZyRgjLmgZJKIB5rOpPfynQpeNYSLCfx8/Xty1e7d/0dgxtrKt2OZ/2mwDiIgI4A+JDmBmaK1hjAER9ZVPIQQREYwxiKIIxvyxpJAQxMy4ZOJEZ9rUqfnfZzpQCSNz3XXXhX3fThdYB5zraUspIaUEAB2GYblQKJgojIStbJNMJqUQwhFCSAB9jC6EADPD931310svRU+ufyJzycRL6OGvfz1ujJZCSB4sBNZwCxUhBKSUnM1mCzu2bw927fqZONp61M71dHMUabZt24wZU0/Tp1/RPX9+E99yyy1Ww8UXxwFYWmtIKcHMmDJlSvKZ5571qidPURRBiMFXnmEDoPbxAEobNz5VeGL9eqft/fY0AKms3mggIjAzMqdPo/XoW3hx6zZTn06V7rjzruzqNatVQ8PFfi1ljDFgZlmLjBHdCxjTu/n329p65s2bW3rooa/Vd3V2JtN+UtalfI7H41BKwbZtKOUgkUigLuVz2k+KIAjizz733Ngrpk8X27dtywghImYGEfWl0UCI97xFQG/YS5w69U5u7pw5+N3bJ+vrUj601myMoXy+QAZgAiJBIM1gALYAKB73YFkWp/0kFQuFxB133uk8dvx49pFVq1Jaa7saUSOrGTp780SEfL5Q+PznPs8n3z6ZSvtJ1lqjUqlQUAnDG264Pr9gwUK+orFRO0qJQrFg/uvNN+XLe/bgwIEDXiWMYn4yAdu2WSllr1y9us5WdtfffOOb9VprMeQgJDyXP+iT9pMMgO+79x5mZg7DkJmZtdbMzNGXly3NAOA6P2n8RJyVJXnC+It6tm3bmmHmMjMbPnNpZi7/8pctnU3zb+oAoP1EnJNxz/jJBBMQ7Nm9q4OZOYqiM9553733MABO+0keyF7EUJKeEAJvHD7c8/zzzyf8RBzaGASVCiY0NOQP/PwXetGiO8YYY5x+pYurjzDGOLNmXVW3d99+72+/+Y3OXL6gheiVOkrZaumyZXYulysIIQbdAg8LCVaJST/11AYTRtoRQrAxhoSQwY9+/JNw6tSpqSAIIITg3/7vb3ueWL8+s/yBB7pWPvJIx6FDh7JCCF0VQrG16x5PP7hiRVd3T4EBkBuL4Z1T7yY3bNhQJiIeTPs7LClQqVSYmbmjoyM/ftzYgusoTvtJA4C/unx5hpl1EATMzOaff/CDjBtz8gBMLQIEobRq5crTvT9VMdVUKs66cmbWlpJTyYSJKZsnfuxjPfl8Pt//nSMiBWry9c033gh+fzqjlFLQWlNMqWDZsmUWMwvbttHa2ppbumRxnIB4XcqnlJ9E2k8imUjEHn3ssbrNmzfnbNuudXXu2u9+V2tjIoDJcRyceu+92Mt79lRqhDuCUoAJAB858mvJgBRCoFwuY9LkSeEnL7/crqXIzuZmHWoTcxwHYRjCaI0oisDM7DqOXLNqpZPLdZeUUjDG4OabPxtvvGJ6sVAsQQjBAKy9e/eaavSMJAAIALi9vZ1790ocaYOPT5zIUkqneqLc3Z2VVSHDVTLTzKyNMaSUjffeb/f2vry3DKAWBXbTzZ/Vke4tr5IIR1uPKADRULXfQ6oEpZR0ti4AwFWCpOs+85lIax2VSiXK5Qu46+67T199zTW5Urnce8JE4vDhQ/29ADFr1lUEIGJmsiyJU6feRRAEwVDpgaFKAQAQl102CQA0M5OjbJw4cUKUy+VKrXR94QsL/Ee//e3uSy+b1HX3XXd1/uMzz3qXXnqp0qZX6oIZ7e3tCoCpyd10OhX24sEQghCGFVOpVM548UhIAQaAxhkzjCWE1lrDcRy8/c4pZ2dzc1kI0RfSK1etqj/S2qpe2LIlpZTy/ufEiVDWtD0Rxo4dFwLoq3XaGPpja93LJUPZCwwJAEIIAhgzZ850P/GJaeUgCACA3ZhjPbhiRezQr37VqZQy1S6OqiYqXtyyJft6S0vc81wYYwjMpnFGo+kjFWa8c/KkDUASEYzWSCSTluu6sooPjQgAiAhaGyilnBUPPhQGYWSEEGRJiZ6enHfTjfPc1atWdr3+2mudx44dy72yf3/HsqWLu+/50pd8S0qbiDgMQ9Sl/PL8+U1OjU+ISP/nq69qAIKIONQGU6dMCfsR68hphqp5TouXLE1sfXFL9pX/eLW+LuVXwdHuo499x123dm2olEKpHLgM2AnPBRHBsiTl8gV+6OGHSxMmTKiLoghSSmQymdK+/ftiXqzX8maAr5p9ta5K5xEphSGlcF54caua/qlPZbu6cyAi2LbNaT8Jz/NsIYTtJxN2Xcpny7JAROjM5vjWv/rLzjVrvpUwxgjTa4aaJ59YH5zOdLhKKURRRMq2wttuu82qvo5HXBmssf348eMTB37xc2vhggUd3T35SjbXQ+Vyua9djqII+XyesrkelIOg9NXlD3TsaN4ZtyzLiaKIlVJ08ODB7qc3bkwkPJeYmQulEm64/vpi44wZbm9FkDQiDZEaCOl0XWJHc7Ozf9++/Pe/973Ca6+/ZnV2dEitteU4TmXK1KnmxhtvrNy3eInV2NiYBmCFYQilFB0//pvs7QsW2AA5QghmZgJzZfWabzEANZTd4LB4gr1urgGRsOc3NdXNb2rSxWKx1N7ezqVSKapL12FCw8W2EEgAEGEYwrZt2LatX3llf/avv/hFp7OjIxGLxVhKSV3dOSxbuqRnzty56ZrXOOJI8P9ygujzCYhIep6XmDx58hl2eRhGtY1zZ2dnYd26teWnN25MSiGcWCzGQgjKdufw6StnZjc+vck1xsihvoof9nuBmmRl5r6nZmzath21tbWVXvi3HwabNm1Sp959b0wy7hER9Z38lMmTcz/56U+F67pejUM+VACcXSWqqjDY2dzcs3Nns9i/b5+T6eyqjylbpP0kqhYZdXXn+OrZV2X//Uc/lg0NDX4/m/3DCUC/FS5ZfG/+X/71h2kCLDfmIO0nq0HClM/niYFg+QP39zz5dxs8pZRnhmnz5xUAYwwLIaitra28fdt2Nxn3LCkldNUTKBRLxEB47TVX59c9/jjPnTsvDcAyxrCQkkbsjNAHNQ0qlYro5/rU2t7g5qb5xfuXL+dbb73NAxDrd4lKI3pIaiBcULvpISKUy+Voy9atXQsX3l4PQJ11rYYRPyY3BA6tmTZtmgKgqkbnOW9+KNxha5CCxxCROBdRUrsp1v/P3+bzeQ7DsG+G4FxWFEWwLAtCCDOYg7QGegmiLImWlpZiFEWIxWLnPCQ1dtxFfPYpjhs3jm3b/mAfblkcRVGhpaUFypKJcwVuSABgZsRiMRw7ejR+07y53QtvXxT+uTG5Wt53ZDKqFrrV+SL57DPPuJMmTa7J53Oy4LQ2YfOO7dGxo0dTnufhvI7J9Se0Uqn0gQclE557xm/0FIq4UIOSNNh/mhrIqOzZnDHQO/8LPio7VB8x0PwdnRYfBWAUgFEARgEYBWAUgFEARgEYxPoDzHZyoWnJBjYAAAAASUVORK5CYII=">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Sihakuru — Coming soon">
-  <meta property="og:description" content="Our new website is on its way. Watch our reels at portfolio.sihakuru.com">
-  <meta property="og:image" content="https://i.ytimg.com/vi/q8BknY8CB00/hqdefault.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
-  <style>
-    :root{--ink:#0C0A09;--paper:#F5F1EC;--soft:#D6D3D1;--muted:#A8A29E;--pink:#EF5470;--red:#EE3B2B;--orange:#F57A28;--yellow:#F9D93B;--ease:cubic-bezier(.2,.7,.2,1)}
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--ink);color:var(--paper);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    a{color:var(--paper)}
-    :focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
-
-    .glow{position:fixed;inset:auto;left:50%;top:50%;width:min(1100px,140vw);height:min(1100px,140vw);transform:translate(-50%,-50%);border-radius:50%;
-      background:radial-gradient(closest-side at 35% 35%,rgba(239,84,112,.55),transparent 70%),radial-gradient(closest-side at 62% 60%,rgba(245,122,40,.5),transparent 70%),radial-gradient(closest-side at 70% 38%,rgba(249,217,59,.35),transparent 70%);
-      filter:blur(90px);opacity:.55;pointer-events:none;animation:drift 20s ease-in-out infinite}
-    .grain{position:fixed;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-
-    .page{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;max-width:1240px;margin:0 auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
-    .brand img{width:26px;height:31px;display:block}
-    .brand span{font-family:Montserrat,sans-serif;font-weight:500;font-size:15px;letter-spacing:.42em}
-    .status{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
-    .rec{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pulse 1.6s ease-in-out infinite}
-
-    main{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:28px;padding:64px 0}
-    .mark{width:84px;height:101px;opacity:.95;animation:rise 1s var(--ease) both}
-    h1{margin:0;font-family:Montserrat,sans-serif;font-weight:600;font-size:clamp(36px,10vw,132px);line-height:.95;letter-spacing:-.045em;animation:rise 1s .1s var(--ease) both}
-    h1 em{font-weight:500;background:linear-gradient(100deg,var(--pink),var(--red) 35%,var(--orange) 65%,var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
-    .lede{margin:0;max-width:520px;font-size:clamp(16px,2vw,18px);line-height:1.65;color:var(--muted);animation:rise 1s .2s var(--ease) both}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:rise 1s .3s var(--ease) both}
-    .btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-    .btn:hover{transform:translateY(-2px)}
-    .btn-grad{background:linear-gradient(100deg,var(--red),var(--orange));color:var(--ink)}
-    .btn-grad:hover{box-shadow:0 14px 44px rgba(238,59,43,.38)}
-    .btn-ghost{border:1px solid rgba(245,241,236,.25);font-weight:500}
-    .btn-ghost:hover{border-color:rgba(245,241,236,.6)}
-
-    .services{display:flex;gap:10px 22px;flex-wrap:wrap;justify-content:center;margin:8px 0 0;padding:0;list-style:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);animation:rise 1s .4s var(--ease) both}
-    .services li{display:flex;align-items:center;gap:22px}
-    .services li+li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--orange)}
-
-    footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);border-top:1px solid rgba(245,241,236,.1);padding-top:22px}
-    footer nav{display:flex;gap:22px;flex-wrap:wrap}
-    footer a{color:var(--soft);text-decoration:none}
-    footer a:hover{color:var(--yellow)}
-
-    @keyframes drift{0%,100%{transform:translate(-50%,-50%) scale(1) rotate(0deg)}50%{transform:translate(-52%,-48%) scale(1.08) rotate(8deg)}}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-    @media (max-width:560px){.status{display:none}.page{padding:22px}footer{justify-content:center;text-align:center}}
-    @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sihakuru · Branding & content studio</title>
+<meta name="description" content="We build brands and the stories that sell them. Brand identities by Sihakuru, film, photography and social media by Sihakuru Labs. Sri Lanka.">
+<link rel="canonical" href="https://sihakuru.com/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#14110e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sihakuru">
+<meta property="og:title" content="Sihakuru · Branding & content studio">
+<meta property="og:description" content="We build brands and the stories that sell them. Brand identities by Sihakuru, film, photography and social media by Sihakuru Labs. Sri Lanka.">
+<meta property="og:url" content="https://sihakuru.com/">
+<meta property="og:image" content="https://sihakuru.com/vid/poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE clean product-studio site in the style of the reference: white, airy, precise, two-tone headings
+   IDEA a brand journey told like a product flow: stages, floating UI cards, ribbons of brand colour running through
+   PICTURE dark rounded media card with the living particle spiral and scroll-revealed words; looping gradient ribbons behind the process
+   COLOUR white ground, ink #14110e, brand gradient pink-red-orange-yellow for accents, warm wash at top and bottom
+   TYPE Geist for headings + Inter for text
+   LAYOUT centred heads, wide rounded cards, two-column stages; phone stacks with sticky stage tabs */
+:root{color-scheme:light;--bg:#ffffff;--soft:#faf7f3;--ink:#14110e;--mut:#6f6860;--line:#ebe5de;--o:#f79a1e;--r:#f0402b;--p:#ec4d6c;--y:#f6dd3c;--grad:linear-gradient(100deg,#ec4d6c,#f0402b 35%,#f79a1e 70%,#f6c53c);--dark:#14110e}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:Geist,Inter,sans-serif;font-weight:600;letter-spacing:-.035em;line-height:1.04;margin:0;text-wrap:balance}
+h2{font-size:clamp(34px,4.6vw,60px)}
+h3{font-size:clamp(24px,2.4vw,34px)}
+p{margin:0}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:shine 7s ease-in-out infinite}
+@keyframes shine{50%{background-position:100% 0}}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:max(4vw,16px)}
+.band{padding-block:clamp(72px,10vw,136px)}
+.mut{color:var(--mut)}
+.c{text-align:center}
+.lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:56ch;margin:20px auto 0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;font-weight:500}
+.pill b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff3e2;color:#c25a07;font-size:12px}
+.pill.plain{padding:6px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:12px;font:600 16px Geist,Inter,sans-serif;border:1px solid var(--line);background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,17,14,.08)}
+.btn.hot{background:var(--grad);color:#1a0c04;border:0}
+.btn.ink{background:var(--ink);color:#fff;border-color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--o);outline-offset:3px}
+/* nav */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:30;width:min(940px,calc(100% - 24px));display:flex;align-items:center;gap:8px;padding:6px 6px 6px 16px;border-radius:16px;background:rgba(20,17,14,.94);backdrop-filter:blur(12px);color:#fff;box-shadow:0 12px 32px rgba(20,17,14,.18)}
+.brand{display:flex;align-items:center;gap:10px;font:600 13px Geist,Inter,system-ui,sans-serif;letter-spacing:.3em}
+.brand img{width:22px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{padding:10px 14px;border-radius:10px;font-size:15px;color:#d9d2c9}
+.links a:hover,.links a.on{color:#fff;background:rgba(255,255,255,.08)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:15px}
+.menu{display:none;margin-left:auto;min-height:42px;padding:0 16px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:none;color:#fff;font:500 15px Inter}
+/* hero */
+.hero{position:relative;padding:150px 0 0;background:radial-gradient(80% 60% at 50% 0%,#ffe4c2 0%,#fff3e6 40%,#fff 75%)}
+.hero h1{font-size:clamp(40px,5.6vw,76px)}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.stage-card{position:relative;margin-top:64px;border-radius:28px;overflow:hidden;background:#080706;aspect-ratio:2/1;box-shadow:0 40px 80px -30px rgba(120,50,0,.35)}
+.stage-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.snd{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(20,17,14,.55);color:#fff;font:500 14px Inter,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
+.snd:hover{background:rgba(20,17,14,.8)}
+.stage-card canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage-card .say{position:absolute;inset:auto 0 0 0;padding:clamp(24px,5vw,64px);font:600 clamp(32px,5.4vw,76px)/1.02 Geist,Inter,system-ui,sans-serif;letter-spacing:-.04em;color:#fff;background:linear-gradient(0deg,rgba(8,7,6,.85),transparent)}
+.say span{opacity:.18;transition:opacity .3s}
+.say span.on{opacity:1}
+.trust{padding:56px 0 24px}
+.trust p{text-align:center;color:var(--mut);font-size:14px}
+.marq{overflow:hidden;margin-top:22px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marq .row{display:flex;gap:14px;width:max-content;animation:slide 45s linear infinite}
+.marq.rev .row{animation-direction:reverse}
+.marq span{white-space:nowrap;padding:14px 22px;border:1px solid var(--line);border-radius:14px;font:600 17px Geist,Inter,system-ui,sans-serif;letter-spacing:-.01em;background:#fff;display:flex;align-items:center;gap:10px}
+.marq span i{width:22px;height:22px;border-radius:7px;background:var(--grad);opacity:.85}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* featured production */
+.feat{padding-top:clamp(40px,6vw,80px)}
+.fgrid2{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:18px;margin-top:48px}
+.finfo{background:var(--dark);color:#fff;border-radius:24px;padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:18px}
+.finfo .live{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);font-size:13px;font-weight:600}
+.finfo .live i{width:8px;height:8px;border-radius:50%;background:#f0402b;animation:rec 1.4s ease-in-out infinite}
+@keyframes rec{50%{opacity:.25}}
+.finfo h3{font-size:clamp(26px,2.6vw,34px)}
+.finfo p{color:#b9b0a6}
+.facts2{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid #2e2924}
+.facts2 li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #2e2924;font-size:15px}
+.facts2 span{color:#9d958b}
+.facts2 b{font-weight:600;text-align:right}
+.finfo .btn{margin-top:auto;align-self:flex-start}
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(120px,1fr));gap:12px}
+.bento figure{margin:0;border-radius:18px;overflow:hidden;position:relative;background:#222}
+.bento figure:first-child{grid-column:span 2;grid-row:span 2}
+.bento img{width:100%;height:100%;object-fit:cover;animation:kb 18s ease-in-out infinite alternate}
+.bento figure:nth-child(even) img{animation-delay:-9s}
+@keyframes kb{to{transform:scale(1.1)}}
+.bento figcaption{position:absolute;left:12px;bottom:12px;padding:5px 11px;border-radius:999px;background:rgba(20,17,14,.7);color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(6px)}
+.btsg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px}
+.btsg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
+/* process */
+.proc{position:relative;overflow:hidden}
+.ribbon{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ribbon .base{fill:none;stroke:#fdebd6;stroke-width:26;stroke-linecap:round}
+.ribbon .edge{fill:none;stroke:#f9d3a8;stroke-width:1.5}
+.ribbon .run{fill:none;stroke:url(#rg);stroke-width:3;stroke-linecap:round;stroke-dasharray:140 1600;animation:run 9s linear infinite}
+@keyframes run{to{stroke-dashoffset:-1740}}
+.st{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:center;padding-block:clamp(56px,8vw,110px)}
+.st h3{font-size:clamp(32px,3.6vw,48px);margin:20px 0 16px}
+.st p{color:var(--mut);font-size:17px;max-width:46ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.tools span{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:500;font-size:15px}
+.tools i{width:22px;height:22px;border-radius:7px;background:var(--c,var(--grad))}
+.ui{display:grid;gap:12px;max-width:380px;justify-self:end;width:100%}
+.ui .k{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid #2a2622;border-radius:14px;background:#fff;box-shadow:0 10px 30px -18px rgba(20,17,14,.35);animation:bob 5s ease-in-out infinite}
+.ui .k:nth-child(2){animation-delay:-1.6s;margin-left:24px}
+.ui .k:nth-child(3){animation-delay:-3.2s}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.ui .k i{flex:none;width:38px;height:38px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font:700 15px Geist,Inter,system-ui,sans-serif;font-style:normal}
+.ui small{display:block;color:var(--mut);font-size:13px}
+.ui b{font-weight:600}
+.ui .sw{display:flex;gap:6px;margin-top:6px}
+.ui .sw u{width:22px;height:22px;border-radius:6px;display:block}
+.ui .tag{justify-self:start;display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:600}
+.tabs{position:sticky;bottom:18px;z-index:10;display:flex;justify-content:center;margin-top:-20px;pointer-events:none}
+.tabs nav{pointer-events:auto;display:flex;gap:2px;padding:6px;border-radius:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(20,17,14,.08);overflow-x:auto;max-width:100%}
+.tabs a{padding:10px 16px;border-radius:10px;color:var(--mut);font-weight:500;white-space:nowrap;position:relative}
+.tabs a.on{color:var(--ink);background:var(--soft)}
+.tabs a.on::after{content:"";position:absolute;left:16px;right:16px;bottom:4px;height:2px;border-radius:2px;background:var(--grad)}
+/* system cards */
+.sys{display:grid;gap:24px;margin-top:56px}
+.sc{position:sticky;top:96px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding:clamp(24px,4vw,48px);border:1px solid var(--line);border-radius:28px;background:#fff;box-shadow:0 -10px 40px -24px rgba(20,17,14,.25)}
+.sc:nth-child(2){top:116px}.sc:nth-child(3){top:136px}
+.sc h3{font-size:clamp(30px,3.4vw,44px)}
+.sc p{color:var(--mut);margin-top:14px;font-size:17px}
+.sc ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.sc li{display:flex;gap:10px;align-items:center;font-weight:500}
+.sc li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px #fff1e0}
+.vis{border-radius:20px;min-height:300px;position:relative;overflow:hidden;background:var(--grad);isolation:isolate;display:grid;place-items:center}
+.vis::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.5;z-index:-1}
+.vis.d{background:#14110e}
+.flip{display:grid;place-items:center;width:62%;aspect-ratio:1;max-width:240px}
+.flip div{grid-area:1/1;width:100%;height:100%;border-radius:22px;display:grid;place-items:center;text-align:center;padding:12%;font:600 clamp(18px,1.8vw,24px)/1.1 Geist,Inter,system-ui,sans-serif;letter-spacing:-.02em;box-shadow:0 30px 50px -20px rgba(60,20,0,.5);animation:flip 12s infinite;opacity:0}
+@keyframes flip{0%{opacity:0;transform:translateY(20px) rotate(-4deg)}4%,22%{opacity:1;transform:none}26%,100%{opacity:0;transform:translateY(-20px) rotate(4deg)}}
+.phones{display:flex;gap:14px;align-items:center}
+.ph{width:clamp(78px,8vw,110px);aspect-ratio:9/16;border-radius:16px;border:3px solid #fff;overflow:hidden;position:relative;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);animation:bob 5s ease-in-out infinite}
+.ph:nth-child(2){transform:translateY(-14px);animation-delay:-2.5s;width:clamp(92px,9.5vw,128px)}
+.ph i{position:absolute;inset:0;background:var(--gg);background-size:100% 300%;animation:roll 6s ease-in-out infinite}
+.ph b{position:absolute;left:50%;top:50%;translate:-40% -50%;border-left:14px solid #fff;border-block:9px solid transparent}
+@keyframes roll{50%{background-position:0 100%}}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;width:min(80%,300px)}
+.cal u{aspect-ratio:1;border-radius:8px;background:rgba(255,255,255,.08);display:block}
+.cal u.on{background:var(--grad);animation:pop 3s ease-in-out infinite}
+@keyframes pop{50%{transform:scale(.82);opacity:.7}}
+/* work */
+.sub{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:56px 0 22px}
+.sub h3{font-size:clamp(22px,2.2vw,28px)}
+.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.lg{display:flex;flex-direction:column;gap:12px}
+.lg .tile{aspect-ratio:1;border-radius:20px;display:grid;place-items:center;text-align:center;padding:14%;transition:transform .35s;border:1px solid rgba(0,0,0,.05)}
+.lg:hover .tile{transform:translateY(-4px)}
+.lg .tile b{font-family:var(--f);font-weight:700;font-size:clamp(17px,1.7vw,23px);line-height:1.1;letter-spacing:var(--ls)}
+.lg h4{margin:0;font:600 17px Geist,Inter,system-ui,sans-serif;letter-spacing:-.01em}
+.lg p{color:var(--mut);font-size:15px;line-height:1.45;margin-top:2px}
+.labs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.lb{display:grid;gap:14px}
+.lb{display:flex!important;flex-direction:column;gap:12px}.lb h4{margin:0;font:600 17px Geist,Inter,system-ui,sans-serif}.lb p{font-size:15px}.lb .cv{flex-direction:column;align-items:flex-start;justify-content:space-between;aspect-ratio:1;border-radius:22px;display:flex;align-items:flex-end;justify-content:space-between;padding:22px;background-size:200% 200%;animation:drift 12s ease-in-out infinite;transition:transform .35s}
+.lb:hover .cv{transform:scale(.985)}
+.lb .cv b{font:600 clamp(20px,2vw,26px) Geist,Inter,system-ui,sans-serif;letter-spacing:-.03em}
+.lb .cv span{padding:6px 12px;border-radius:999px;background:rgba(0,0,0,.28);color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(6px)}
+.lb p{color:var(--mut)}
+@keyframes drift{50%{background-position:100% 100%}}
+.lg .tile.vis{min-height:0}.lb .cv{align-items:flex-start;justify-content:space-between}.note{font-size:13px;color:var(--mut);margin-top:16px}
+/* founder band */
+.fb{background:var(--dark);color:#fff;border-radius:32px;margin-inline:max(1.5vw,8px);overflow:hidden}
+.fb .pill{background:#fff;color:var(--ink)}
+.fb .lead{color:#b9b0a6}
+.fcard{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:56px;padding:clamp(20px,3vw,32px);border-radius:24px;background:#1e1a16;border:1px solid #2e2924}
+.por{aspect-ratio:4/5;border-radius:18px;background:var(--grad);background-size:200% 200%;animation:drift 10s ease-in-out infinite;display:grid;place-items:end start;padding:22px;color:#1a0c04}
+.por b{font:700 clamp(80px,10vw,140px)/.8 Geist,Inter,system-ui,sans-serif;letter-spacing:-.06em}
+.por small{display:block;margin-top:10px;font-weight:600}
+.fcard blockquote{margin:0;font:500 clamp(22px,2.4vw,32px)/1.3 Geist,Inter,system-ui,sans-serif;letter-spacing:-.02em}
+.fcard cite{display:block;margin-top:22px;font-style:normal;color:#b9b0a6}
+.fcard cite b{color:#fff;display:block;font-size:18px}
+.fcard .btn{margin-top:28px}
+/* stats + cta */
+.cta-band{background:radial-gradient(90% 80% at 50% 100%,#ffd7a6 0%,#ffe9cf 40%,#fff 80%)}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.stat{display:flex;align-items:center;gap:16px;padding:18px 24px;border:1px solid #f1c48f;border-radius:18px;background:rgba(255,255,255,.75)}
+.stat b{font:600 clamp(40px,4.6vw,60px)/1 Geist,Inter,system-ui,sans-serif;letter-spacing:-.04em}
+.stat span{color:var(--mut);max-width:10em;line-height:1.3}
+.ctabox{margin-top:clamp(64px,8vw,110px)}
+.ctabox .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.ways{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px;color:var(--mut);font-size:15px}
+.ways a{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:56px 0 32px}
+.fgrid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(2,minmax(0,1fr));gap:32px}
+footer .brand{color:var(--ink)}
+footer .brand img{filter:invert(1)}
+footer h4{margin:0 0 12px;font:600 15px Geist,Inter,system-ui,sans-serif}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--mut)}
+footer a:hover{color:var(--ink)}
+.fine{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:40px;color:var(--mut);font-size:14px}
+/* views */
+.view{display:none}.view.on{display:block}
+.chero{padding:150px 0 0}
+.chero .cv{margin-top:48px;border-radius:28px;aspect-ratio:16/7;background-size:200% 200%;animation:drift 12s ease-in-out infinite}
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(28px,6vw,96px)}
+.cgrid p{font-size:clamp(18px,1.7vw,21px);line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.tags span{padding:9px 14px;border:1px solid var(--line);border-radius:12px;font-weight:500}
+.bts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.bts div{aspect-ratio:4/5;border-radius:20px;background:var(--soft);border:1px dashed #e2d6c8;display:grid;place-items:center;color:var(--mut);font-size:14px;text-align:center;padding:16px}
+.next{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;margin-top:72px;padding-top:28px;border-top:1px solid var(--line)}
+.next a:last-child{font:600 clamp(22px,2.8vw,34px) Geist,Inter,system-ui,sans-serif;letter-spacing:-.03em}
+.fhero{padding:160px 0 40px;background:radial-gradient(80% 60% at 50% 0%,#ffe4c2 0%,#fff3e6 40%,#fff 75%)}
+.av{width:clamp(130px,16vw,180px);aspect-ratio:1;border-radius:50%;margin:0 auto 28px;background:var(--grad);background-size:200% 200%;animation:drift 8s ease-in-out infinite,bob 6s ease-in-out infinite;display:grid;place-items:center;font:700 clamp(42px,5vw,58px) Geist,Inter,system-ui,sans-serif;color:#1a0c04;letter-spacing:-.04em}
+.fhero h1{font-size:clamp(42px,6.4vw,84px)}
+.fhero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.rows{border-top:1px solid var(--line);margin-top:36px}
+.rows div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.rows b{font:600 clamp(18px,1.8vw,22px) Geist,Inter,system-ui,sans-serif;letter-spacing:-.02em;display:block}
+.rows p{color:var(--mut);margin-top:4px;font-size:15px}
+.rows span{color:var(--mut);font-size:14px;white-space:nowrap}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,80px)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chips span{padding:10px 14px;border-radius:12px;border:1px solid var(--line);font-weight:500}
+.vens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.ven{padding:24px;border:1px solid var(--line);border-radius:20px}
+.ven i{display:block;width:44px;height:44px;border-radius:12px;margin-bottom:18px;background:var(--c);background-size:200% 200%;animation:drift 6s ease-in-out infinite}
+.ven h4{margin:0;font:600 19px Geist,Inter,system-ui,sans-serif}
+.ven p{color:var(--mut);margin-top:6px;font-size:15px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;transition:transform .3s,visibility .3s;z-index:50}
+.toast.on{transform:translate(-50%,0);visibility:visible}
+@media(max-width:900px){.links,.nav .btn{display:none}.menu{display:block}.links.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;padding:8px;border-radius:16px;background:rgba(20,17,14,.96)}.links.open a{padding:14px}.logos{grid-template-columns:repeat(3,minmax(0,1fr))}.sc{position:relative;top:auto!important}.vens{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:720px){.fgrid2{grid-template-columns:minmax(0,1fr)}.bento{grid-template-rows:repeat(3,110px);order:-1}.btsg{grid-template-columns:repeat(2,minmax(0,1fr))}.ribbon{opacity:.45}.st,.sc,.fcard,.cgrid,.two{grid-template-columns:minmax(0,1fr)}.ui{justify-self:start}.stage-card{border-radius:18px;margin-top:44px}.snd{right:10px;bottom:10px;min-height:34px;padding:0 10px;font-size:13px}.snd #sndt{display:none}.labs{grid-template-columns:minmax(0,1fr)}.fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fgrid>div:first-child{grid-column:1/-1}.por{aspect-ratio:16/11}.bts{grid-template-columns:repeat(2,minmax(0,1fr))}.bts div:last-child{display:none}}
+@media(max-width:520px){.logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stat{padding:14px 18px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.flip div:first-child{opacity:1}.say span{opacity:1}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <div class="glow" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+<header class="nav">
+ <a class="brand" href="#top"><img src="/assets/icon-w.png" alt="">SIHAKURU</a>
+ <nav class="links" id="links"><a href="#top">Home</a><a href="#process">How we work</a><a href="#services">Services</a><a href="#work">Work</a><a href="#harshana">Founder</a></nav>
+ <a class="btn hot" href="#contact">Start a project</a>
+ <button class="menu" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+</header>
 
-  <div class="page">
-    <header>
-      <a href="/" class="brand" aria-label="Sihakuru">
-        <img src="data:image/png;base64,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" alt="" width="26" height="31">
-        <span>SIHAKURU</span>
-      </a>
-      <span class="status"><span class="rec" aria-hidden="true"></span>Now in production</span>
-    </header>
+<main id="home" class="view on">
+ <section class="hero c" id="top"><div class="wrap">
+  <h1>We build brands.<br><span class="g">And the stories that sell them.</span></h1>
+  <p class="lead">Branding and content studio from Sri Lanka. Identities by Sihakuru, brought to life by Sihakuru Labs.</p>
+  <div class="cta"><a class="btn hot" href="#contact">Start a project</a><a class="btn" href="#work">See our work</a></div>
+  <div class="stage-card"><video id="hv" src="/vid/hero.mp4" poster="/vid/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Sihakuru brand film: Not just a logo. Logos, films, reels, stories. Unlock uniqueness."></video><button class="snd" id="snd" type="button" aria-pressed="false"><span id="sndi" style="display:grid"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg></span><span id="sndt">Sound off</span></button></div>
+ </div>
+ <div class="trust"><p>Brands we've built and worked with</p><div class="marq"><div class="row" id="m1"></div></div></div>
+ </section>
 
-    <main>
-      <img class="mark" src="data:image/png;base64,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" alt="" width="84" height="101">
-      <h1>Something new<br>is in the <em>frame.</em></h1>
-      <p class="lede">Our new website is on its way. Until then, watch our latest reels or get in touch — we’d love to hear your story.</p>
-      <div class="actions">
-        <a class="btn btn-grad" href="https://portfolio.sihakuru.com">
-          <svg width="13" height="15" viewBox="0 0 14 16" aria-hidden="true"><path d="M1 1.5v13l12-6.5z" fill="currentColor"/></svg>
-          Watch our reels
-        </a>
-        <a class="btn btn-ghost" href="mailto:hello@sihakuru.com">hello@sihakuru.com</a>
-      </div>
-      <ul class="services" aria-label="What we make">
-        <li>Promo films</li><li>Hotel &amp; travel</li><li>Company profiles</li><li>Reels &amp; social</li>
-      </ul>
-    </main>
-
-    <footer>
-      <span>© <span id="y">2026</span> Sihakuru</span>
-      <nav aria-label="Contact">
-        <a href="https://wa.me/94772617756" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://www.facebook.com/Sihakuru" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://portfolio.sihakuru.com">Portfolio</a>
-      </nav>
-    </footer>
+ <section class="band feat" id="featured"><div class="wrap">
+  <div class="c"><span class="pill"><b>▶</b>Featured production · Sihakuru Labs</span><h2 style="margin-top:20px">Corporate commercial<br><span class="g">for Autoways (PVT) Ltd.</span></h2><p class="lead">On location with one of Sri Lanka's leaders in tyre rebuilding and manufacturing, filming the strength and precision behind their work.</p></div>
+  <div class="fgrid2">
+   <div class="finfo"><span class="live"><i></i>Behind the scenes</span><h3>From concept to execution, across the island.</h3><p>Two location shoots at the Anuradhapura and Kuruwita branches, capturing operations, technical processes and the scale of a nationwide business.</p>
+    <ul class="facts2"><li><span>Project</span><b>Corporate commercial</b></li><li><span>Client</span><b>Autoways (PVT) Ltd</b></li><li><span>Industry</span><b>Manufacturing &amp; tyre rebuilding</b></li><li><span>Locations</span><b>Anuradhapura · Kuruwita</b></li></ul>
+    <a class="btn hot" href="#work-autoways">See the full project</a></div>
+   <div class="bento">
+    <figure><img src="/assets/bts/a1.jpg" alt="Autoways Anuradhapura branch"><figcaption>Anuradhapura branch</figcaption></figure>
+    <figure><img src="/assets/bts/b2.jpg" alt="Camera operator filming inside the factory"></figure>
+    <figure><img src="/assets/bts/a4.jpg" alt="Sihakuru Labs crew on set"></figure>
+    <figure><img src="/assets/bts/b4.jpg" alt="Crew filming machinery"><figcaption>Kuruwita</figcaption></figure>
+    <figure><img src="/assets/bts/a2.jpg" alt="Filming a machine operator"></figure>
+    <figure><img src="/assets/bts/b1.jpg" alt="Team with the Autoways client at Kuruwita"></figure>
+   </div>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+ </div></section>
+
+ <section class="band proc" id="process">
+  <div class="wrap c"><span class="pill plain">How we build momentum</span><h2 style="margin-top:20px">From first idea<br><span class="g">to a brand people remember.</span></h2><p class="lead">One team takes your brand from the first conversation to the content that keeps it growing.</p></div>
+  <div class="wrap" id="stages" style="position:relative"></div>
+  <div class="tabs"><nav id="tabs"></nav></div>
+ </section>
+
+ <section class="band" id="services" style="padding-top:0"><div class="wrap">
+  <div class="c"><span class="pill plain">Why Sihakuru</span><h2 style="margin-top:20px">Brand, content and care.<br><span class="g">All under one roof.</span></h2><p class="lead">Built around three things every growing brand needs.</p></div>
+  <div class="sys">
+   <article class="sc"><div><h3>The Right <span class="g">Brand</span></h3><p>Sihakuru designs identities that feel like they've always belonged to you, and work everywhere from a shop sign to a reel.</p><ul><li>Logo &amp; brand identity</li><li>Brand guidelines</li><li>Menus, packaging &amp; print</li><li>Rebrands</li></ul></div><div class="vis"><div class="flip" id="flip"></div></div></article>
+   <article class="sc"><div><h3>The Right <span class="g">Content</span></h3><p>Sihakuru Labs shoots and edits the film and photography that bring your brand to life.</p><ul><li>Commercials &amp; promo videos</li><li>Hotel &amp; resort photography</li><li>Reels &amp; short-form video</li><li>Motion graphics</li></ul></div><div class="vis d"><div class="phones"><div class="ph" style="--gg:linear-gradient(180deg,#2f7f75,#0f2f33,#cfe2b8)"><i></i><b></b></div><div class="ph" style="--gg:linear-gradient(180deg,#f79a1e,#7a1e12,#f6dd3c)"><i></i><b></b></div><div class="ph" style="--gg:linear-gradient(180deg,#4f86c6,#152f5c,#f2d16b)"><i></i><b></b></div></div></div></article>
+   <article class="sc"><div><h3>The Right <span class="g">Care</span></h3><p>Monthly social media management that keeps your brand showing up, consistently and on time.</p><ul><li>Content planning</li><li>Design &amp; posting</li><li>Page management</li><li>Monthly reporting</li></ul></div><div class="vis d"><div class="cal" id="cal"></div></div></article>
+  </div>
+ </div></section>
+
+ <section class="band" id="work" style="padding-top:0"><div class="wrap">
+  <div class="c"><span class="pill plain">Selected work</span><h2 style="margin-top:20px">Work we're proud of.<br><span class="g">And many more to come.</span></h2></div>
+  <div class="sub"><h3>Brand identities</h3><a class="pill plain" href="#brands">View all →</a></div>
+  <div class="logos" id="logos"></div>
+  <div class="sub"><h3>Production &amp; social</h3><a class="pill plain" href="#production">View all →</a></div>
+  <div class="logos" id="labs"></div>
+  <div class="c" style="margin-top:36px"><a class="btn" href="https://portfolio.sihakuru.com">Watch our reels ↗</a></div>
+ </div></section>
+
+ <section class="band fb"><div class="wrap">
+  <div class="c"><span class="pill plain">A word from our founder</span><h2 style="margin-top:20px">The thinking<br><span class="g">behind Sihakuru.</span></h2><p class="lead">Why we bring branding and content together, and how that shapes every project.</p></div>
+  <div class="fcard"><div class="por"><div><b>HR</b></div></div>
+   <div><blockquote>“Most businesses get a logo from one person, videos from another and a page nobody owns. I started Sihakuru so every piece of a brand comes from one team, and finally matches.”</blockquote>
+    <cite><b>Harshana Rajapaksha</b>Founder &amp; CEO, Sihakuru</cite>
+    <a class="btn hot" href="#harshana">View profile</a></div></div>
+ </div></section>
+
+ <section class="band cta-band" id="contact"><div class="wrap c">
+  <div class="stats" id="stats"></div>
+  <div class="ctabox"><span class="pill plain">Make it happen</span><h2 style="margin-top:20px">Ready to stand out?<br><span class="g">Let's get started.</span></h2><p class="lead">Tell us about your business. We usually reply on WhatsApp within a day.</p>
+   <div class="cta"><a class="btn hot" href="https://wa.me/94772617756?text=Hi%20Sihakuru!%20I'd%20like%20to%20talk%20about%20a%20project.">Message on WhatsApp</a><a class="btn" href="mailto:hello@sihakuru.com">hello@sihakuru.com</a></div>
+   <div class="ways"><a href="https://wa.me/94772617756">+94 77 261 7756</a><a href="https://facebook.com/Sihakuru">Facebook ↗</a><a href="https://portfolio.sihakuru.com">Reels ↗</a></div></div>
+ </div></section>
+</main>
+
+<main id="case" class="view"></main>
+
+<main id="brands" class="view">
+ <section class="chero"><div class="wrap c"><a class="pill plain" href="#work">← Back to home</a><h1 style="font-size:clamp(42px,6.4vw,84px);margin-top:20px">Brand identities<br><span class="g">by Sihakuru.</span></h1><p class="lead">Logos and identities we've designed for restaurants, villas, salons, wellness and food brands.</p></div></section>
+ <section class="band" style="padding-top:56px"><div class="wrap"><div class="logos" id="allLogos"></div></div></section>
+</main>
+
+<main id="production" class="view">
+ <section class="chero"><div class="wrap c"><a class="pill plain" href="#work">← Back to home</a><h1 style="font-size:clamp(42px,6.4vw,84px);margin-top:20px">Production &amp; social<br><span class="g">by Sihakuru Labs.</span></h1><p class="lead">Commercials, hotel shoots, reels and social media work. Open a project for the story behind it.</p></div></section>
+ <section class="band" style="padding-top:56px"><div class="wrap"><div class="logos" id="allLabs"></div><div class="c" style="margin-top:36px"><a class="btn" href="https://portfolio.sihakuru.com">Watch all reels ↗</a></div></div></section>
+</main>
+
+<main id="founder" class="view">
+ <section class="fhero c"><div class="wrap">
+  <div class="av">HR</div>
+  <h1>Harshana Rajapaksha<br><span class="g">Founder &amp; CEO, Sihakuru</span></h1>
+  <p class="lead">Graphic designer, filmmaker and visual storyteller, building brands and the stories that sell them.</p>
+  <div class="cta"><button class="btn hot" id="copy" type="button">Copy profile link</button><a class="btn" href="https://wa.me/94772617756">WhatsApp</a><a class="btn" href="https://instagram.com/rajapaksha_h_">Instagram ↗</a></div>
+ </div></section>
+ <section class="band" style="padding-top:40px"><div class="wrap two">
+  <div><span class="pill plain">Background</span><h2 style="margin-top:20px;font-size:clamp(30px,3.6vw,46px)">Design, film<br><span class="g">and everything between.</span></h2><p class="mut" style="margin-top:18px;max-width:46ch">I came to design through interactive media and stayed for the moment a brand clicks. Today I lead creative direction at Sihakuru, and still sketch the logos and hold the camera myself.</p><div class="chips" id="skills"></div></div>
+  <div class="rows" id="exp" style="margin-top:0"></div>
+ </div></section>
+ <section class="band" style="padding-top:0"><div class="wrap">
+  <div class="c"><span class="pill plain">Beyond the studio</span><h2 style="margin-top:20px;font-size:clamp(30px,3.6vw,46px)">Also creating</h2></div>
+  <div class="vens" id="vens"></div>
+  <div class="c" style="margin-top:48px"><a class="btn ink" href="#contact">Start a project with Sihakuru</a></div>
+ </div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fgrid">
+  <div><a class="brand" href="#top"><img src="/assets/icon-w.png" alt="">SIHAKURU</a><p class="mut" style="margin-top:16px;max-width:36ch">Branding and content studio, Sri Lanka. Home of Sihakuru Labs.</p></div>
+  <div><h4>Navigate</h4><ul><li><a href="#process">How we work</a></li><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#harshana">Founder</a></li></ul></div>
+  <div><h4>Get in touch</h4><ul><li><a href="mailto:hello@sihakuru.com">hello@sihakuru.com</a></li><li><a href="https://wa.me/94772617756">+94 77 261 7756</a></li><li><a href="https://facebook.com/Sihakuru">Facebook</a></li><li><a href="https://portfolio.sihakuru.com">Reels portfolio</a></li></ul></div>
+ </div>
+ <div class="fine"><span>© <span id="yr"></span> Sihakuru. All rights reserved.</span><span>sihakuru.com</span></div>
+</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+{
+const $=s=>document.querySelector(s);
+const logos=[
+ ["Lamprai Station","Restaurant","Logo and identity for a lamprais restaurant.","#c94a1f","#fff3e2",0],
+ ["Yaggapitiya Junction","Restaurant · by GLAX","Logo and full branding pack.","#2a211b","#e9b673",1],
+ ["Serendib Spice & Grill","Restaurant","A bold mark for a spice and grill kitchen.","#7e1b1f","#ffd9b0",0],
+ ["Clara Villas","Villa · Amithirigala","A calm, elegant identity for a private villa.","#ebe4d6","#3b3127",1],
+ ["Ayurdi Ayurveda","Wellness","Identity for an Ayurveda brand.","#2f4a31","#e8dcb4",1],
+ ["Magic of Ceylon","Brand identity","Logo design.","#13324a","#f3c86a",0],
+ ["Underworld Fitness","Fitness","A strong mark for a fitness brand.","#111111","#f0402b",0],
+ ["Armoire","Brand identity","Logo design.","#f2ece6","#1a1714",1],
+ ["Cinnastick Ceylon","Ceylon cinnamon","Identity for a cinnamon brand.","#6b3a1f","#f6d7a7",1],
+ ["Lumera Salon","Salon & beauty","A soft, modern salon identity.","#f3dbe3","#5a2840",1],
+ ["Liora Herbal","Herbal products","Identity for an herbal brand.","#dfe8d2","#2e4a2a",1]
+];
+const cases=[
+ {s:"autoways",n:"Autoways",t:"Corporate commercial",g:"linear-gradient(150deg,#1a1a1a,#7a1e12,#f0402b,#7a1e12)",k:"#fff",img:"/assets/bts/a1.jpg",photos:["/assets/bts/a1.jpg","/assets/bts/a2.jpg","/assets/bts/a3.jpg","/assets/bts/a4.jpg","/assets/bts/b1.jpg","/assets/bts/b2.jpg","/assets/bts/b3.jpg","/assets/bts/b4.jpg","/assets/bts/b5.jpg"],p:"A corporate commercial for Autoways (PVT) Ltd, a leader in Sri Lanka's tyre rebuilding and manufacturing industry. We shot on location at the Anuradhapura and Kuruwita branches, capturing operational capability, technical processes and the scale of a nationwide business.",d:["Corporate commercial","Location shoots","Creative direction"]},
+ {s:"saludiya-retreat",n:"Saludiya Retreat",t:"Hotel",g:"linear-gradient(150deg,#0f2f33,#2f7f75,#cfe2b8,#2f7f75)",k:"#f2fff8",p:"Reels and social video that show guests what a stay at the retreat actually feels like. We planned shoots around the light and cut short vertical reels for Instagram and Facebook.",d:["Hotel reels","Social video","Photo selects"]},
+ {s:"sky-cafe",n:"Sky Cafe",t:"Café",g:"linear-gradient(150deg,#152f5c,#4f86c6,#f2d16b,#4f86c6)",k:"#fff",p:"A steady flow of reels that keeps the café's feed fresh and makes people hungry. Quick shoots during service, cut for the first two seconds of attention.",d:["Reels","Social content"]},
+ {s:"awd-furniture",n:"AWD Furniture",t:"Retail",g:"linear-gradient(150deg,#2a2420,#7a5a3e,#d9b98c,#7a5a3e)",k:"#fff7ec",p:"Product reels that show the grain, finish and scale of each piece better than photos can.",d:["Product reels","Social video"]},
+ {s:"world-vision",n:"World Vision",t:"NGO",g:"linear-gradient(150deg,#3b1b0c,#e5641f,#f6b04a,#e5641f)",k:"#fff6ee",p:"Video content that tells real stories from the field, honestly and with respect for the people in them.",d:["Video content","Reels"]}
+];
+const marq=["Autoways","Lamprai Station","Yaggapitiya Junction","Saludiya Retreat","Serendib Spice & Grill","Sky Cafe","Clara Villas","AWD Furniture","Ayurdi Ayurveda","World Vision","Cinnastick Ceylon","Lumera Salon","Underworld Fitness","Liora Herbal","Magic of Ceylon","Armoire"];
+const stages=[
+ {id:"discover",t:"Discover",h:"Understand the business",p:"We start with a call or a visit to learn your business, your customers and what makes you different.",tools:["Brand workshop","Site visit","Moodboards"],ui:[["✦","New brief","Boutique hotel · Branding + reels"],["◎","Site visit","Booked for Saturday"],["▦","Moodboard","24 references collected"]],tag:"New project"},
+ {id:"identity",t:"Identity",h:"Design the brand",p:"Logo, colours, type and voice, shaped into a system that works on a sign, a menu and a feed.",tools:["Logo","Colour & type","Guidelines"],ui:[["A","Logo concepts","3 directions ready"],["●","Colour palette","sw"],["✓","Brand guidelines","Approved"]],tag:"Sihakuru"},
+ {id:"content",t:"Content",h:"Shoot and create",p:"Sihakuru Labs brings the brand to life with film, photography and motion, planned around your best moments.",tools:["Commercials","Hotel photography","Reels"],ui:[["▶","Shoot day","Rooms, dining, pool"],["✂","Reel 01","Editing"],["◐","Promo video","Colour grade"]],tag:"Sihakuru Labs"},
+ {id:"launch",t:"Launch",h:"Go live together",p:"We roll the brand out everywhere at once, so the first impression is a consistent one.",tools:["Instagram","Facebook","Print"],ui:[["◉","Instagram","Launch post scheduled"],["f","Facebook page","Cover & profile updated"],["▣","Print","Menus sent to printer"]],tag:"Launch week"},
+ {id:"grow",t:"Grow",h:"Keep it moving",p:"Monthly social media care keeps your brand showing up, with fresh content and a clear plan every month.",tools:["Content plan","Posting","Monthly report"],ui:[["▤","Content plan","Next month ready"],["▶","Reels calendar","8 reels planned"],["↗","Monthly report","Sent to client"]],tag:"Every month"}
+];
+const exp=[["Founder & CEO, Sihakuru","Leading creative direction across branding, film, photography and social media.","Now"],["Founder, Sihakuru Labs","Commercials, hotel promos, reels and social media management.","Now"],["Graphic Designer","Visual content for social media, campaigns, events and print.","2024 – now"],["BSc in Information Technology","Specialised in Interactive Media.","Degree"]];
+const skills=["Brand identity","Graphic design","Creative direction","Motion graphics","Video editing","Cinematography","Photography","Social media"];
+const vens=[["Stories by Harshana","Photography and film: people, places and moments.","linear-gradient(135deg,#ec4d6c,#f79a1e,#ec4d6c)"],["RawTrails by Harshana","Hikes, camps and random adventures across Sri Lanka.","linear-gradient(135deg,#2f7f75,#cfe2b8,#2f7f75)"],["Concert reels","Live music and event reels, on camera and mobile.","linear-gradient(135deg,#1b3b6f,#ec4d6c,#1b3b6f)"]];
+
+$("#m1").innerHTML=[...marq,...marq].map(n=>`<span><i></i>${n}</span>`).join("");
+const sw=`<span class="sw"><u style="background:#ec4d6c"></u><u style="background:#f0402b"></u><u style="background:#f79a1e"></u><u style="background:#f6dd3c"></u><u style="background:#14110e"></u></span>`;
+const ribbon=`<svg class="ribbon" viewBox="0 0 1200 3000" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ec4d6c"/><stop offset=".5" stop-color="#f79a1e"/><stop offset="1" stop-color="#f6dd3c"/></linearGradient></defs><path id="rp" class="base" d="M1300 60 C 700 120, 300 260, 520 560 S 1180 820, 900 1180 S 120 1380, 380 1760 S 1150 2050, 820 2420 S 200 2700, -100 2940"/><use href="#rp" class="edge"/><use href="#rp" class="run"/><use href="#rp" class="run" style="animation-delay:-4.5s"/></svg>`;
+$("#stages").innerHTML=ribbon+stages.map((s,i)=>`<div class="st" id="st-${s.id}"><div><span class="pill"><b>${i+1}</b>${s.t}</span><h3>${s.h}</h3><p>${s.p}</p><div class="tools">${s.tools.map(t=>`<span><i></i>${t}</span>`).join("")}</div></div><div class="ui"><span class="tag">▸ ${s.tag}</span>${s.ui.map(u=>`<div class="k"><i>${u[0]}</i><div><small>${u[1]}</small>${u[2]==="sw"?sw:`<b>${u[2]}</b>`}</div></div>`).join("")}</div></div>`).join("");
+$("#tabs").innerHTML=stages.map(s=>`<a href="#st-${s.id}" data-s="${s.id}">${s.t}</a>`).join("");
+$("#flip").innerHTML=logos.slice(0,4).map((l,i)=>`<div style="background:${l[3]};color:${l[4]};font-family:${l[5]?"Georgia,serif":"Geist,Inter,sans-serif"};animation-delay:${i*3}s">${l[0]}</div>`).join("");
+$("#cal").innerHTML=Array.from({length:28},(_,i)=>`<u class="${[2,5,8,11,15,18,22,25].includes(i)?"on":""}" style="animation-delay:-${(i%7)*.4}s"></u>`).join("");
+const logoCard=l=>`<div class="lg"><div class="tile" style="background:${l[3]};color:${l[4]};--f:${l[5]?"Georgia,serif":"Geist,Inter"};--ls:${l[5]?".01em":"-.03em"}"><b>${l[0]}</b></div><div><h4>${l[0]}</h4><p>${l[1]} · ${l[2]}</p></div></div>`;
+const more=(href,big,h,p)=>`<a class="lg" href="${href}"><div class="tile vis" style="color:#1a0c04"><b style="font-family:Geist,Inter,sans-serif;font-size:clamp(20px,2vw,28px)">${big}</b></div><div><h4>${h}</h4><p>${p}</p></div></a>`;
+const labCard=(c,i)=>`<a class="lb" href="#work-${c.s}"><div class="cv" style="${c.img?`background-image:linear-gradient(0deg,rgba(0,0,0,.6),transparent 55%),url(${c.img});background-size:cover;background-position:center;animation:none`:`background-image:${c.g};animation-delay:-${i*3}s`};color:${c.k}"><span>${c.t}</span><b>${c.n}</b></div><div><h4>${c.n}</h4><p class="mut">${c.d.join(" · ")}</p></div></a>`;
+$("#logos").innerHTML=logos.slice(0,3).map(logoCard).join("")+more("#brands","+ "+(logos.length-3)+" more","All brand identities","See every logo we've built.");
+$("#allLogos").innerHTML=logos.map(logoCard).join("")+more("#contact","Your brand next?","Let's talk","Start your brand with Sihakuru.");
+$("#labs").innerHTML=cases.slice(0,3).map(labCard).join("")+more("#production","+ more","All production work","Reels, shoots and social projects.");
+$("#allLabs").innerHTML=cases.map(labCard).join("");
+$("#stats").innerHTML=[[logos.length,"+","Brand identities built"],[cases.length,"+","Labs clients"],[2,"","Divisions, one team"],[1,"","Point of contact"]].map(s=>`<div class="stat"><b data-n="${s[0]}" data-s="${s[1]}">${s[0]}${s[1]}</b><span>${s[2]}</span></div>`).join("");
+$("#exp").innerHTML=exp.map(e=>`<div><div><b>${e[0]}</b><p>${e[1]}</p></div><span>${e[2]}</span></div>`).join("");
+$("#skills").innerHTML=skills.map(s=>`<span>${s}</span>`).join("");
+$("#vens").innerHTML=vens.map(v=>`<div class="ven"><i style="--c:${v[2]}"></i><h4>${v[0]}</h4><p>${v[1]}</p></div>`).join("");
+$("#yr").textContent=new Date().getFullYear();
+
+/* hero video */
+const hv=$("#hv"),ICOFF=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg>`,ICON=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>`;
+$("#snd").addEventListener("click",()=>{hv.muted=!hv.muted;if(!hv.muted)hv.play().catch(()=>{});$("#snd").setAttribute("aria-pressed",!hv.muted);$("#sndi").innerHTML=hv.muted?ICOFF:ICON;$("#sndt").textContent=hv.muted?"Sound off":"Sound on"});
+const vIO=new IntersectionObserver(e=>{e[0].isIntersecting?hv.play().catch(()=>{}):hv.pause()});vIO.observe(hv);
+if(matchMedia("(prefers-reduced-motion:reduce)").matches){hv.removeAttribute("autoplay");hv.pause()}
+/* active stage tab */
+const tabIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id.slice(3);document.querySelectorAll("#tabs a").forEach(a=>a.classList.toggle("on",a.dataset.s===id))}}),{rootMargin:"-45% 0px -45% 0px"});
+document.querySelectorAll(".st").forEach(s=>tabIO.observe(s));
+document.querySelector("#tabs a").classList.add("on");
+/* counters */
+const cIO=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const b=e.target,n=+b.dataset.n,s=b.dataset.s,t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/1200);b.textContent=Math.round(n*(1-(1-k)**3))+s;if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step);cIO.unobserve(b)}),{threshold:.6});
+document.querySelectorAll(".stat b").forEach(b=>cIO.observe(b));
+
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2200)};
+$("#copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText("https://sihakuru.com/harshana");toast("Link copied: sihakuru.com/harshana")}catch(e){toast("sihakuru.com/harshana")}});
+$("#menu").addEventListener("click",()=>{const o=$("#links").classList.toggle("open");$("#menu").setAttribute("aria-expanded",o)});
+$("#links").addEventListener("click",()=>{$("#links").classList.remove("open");$("#menu").setAttribute("aria-expanded",false)});
+
+const caseHTML=c=>{const nx=cases[(cases.indexOf(c)+1)%cases.length];return `<section class="chero"><div class="wrap"><a class="pill plain" href="#production">← All production work</a><h1 style="font-size:clamp(42px,6.4vw,84px);margin-top:20px">${c.n}<br><span class="g">${c.t} · Sihakuru Labs</span></h1><div class="cv" style="${c.img?`background:url(${c.img}) center/cover;animation:none`:`background-image:${c.g}`}"></div></div></section>
+<section class="band"><div class="wrap"><div class="cgrid"><h2>The project</h2><div><p>${c.p}</p><div class="tags">${c.d.map(x=>`<span>${x}</span>`).join("")}</div></div></div>
+<h2 style="margin-top:80px;font-size:clamp(28px,3vw,40px)">Behind the scenes</h2>${c.photos?`<div class="btsg">${c.photos.map(p=>`<img src="${p}" alt="Behind the scenes" loading="lazy">`).join("")}</div>`:`<div class="bts"><div>Add a behind-the-scenes photo</div><div>Add a shoot photo</div><div>Add a final frame</div></div>`}
+<div class="next"><a class="btn" href="#production">← All production work</a><a href="#work-${nx.s}">${nx.n} →</a></div></div></section>`};
+const route=()=>{let h=location.hash.slice(1);if(!h&&/^\/harshana\/?$/.test(location.pathname))h="harshana";let v="home";
+ if(h.startsWith("work-")){const c=cases.find(x=>"work-"+x.s===h);if(c){$("#case").innerHTML=caseHTML(c);v="case";document.title=c.n+" · Sihakuru"}}
+ else if(h==="harshana"){v="founder";document.title="Harshana Rajapaksha · Sihakuru"}
+ else if(h==="brands"){v="brands";document.title="Brand identities · Sihakuru"}
+ else if(h==="production"){v="production";document.title="Production & social · Sihakuru Labs"}
+ if(v==="home")document.title="Sihakuru · Branding & content studio";
+ const was=document.querySelector(".view.on").id;
+ document.querySelectorAll(".view").forEach(m=>m.classList.toggle("on",m.id===v));
+ document.querySelectorAll(".links a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+(v==="founder"?"harshana":h)));
+ if(v!=="home"||was!=="home"){if(v==="home"&&h)requestAnimationFrame(()=>document.getElementById(h)?.scrollIntoView());else scrollTo(0,0)}
+};
+addEventListener("hashchange",route);route();
+}
+</script>
 </body>
 </html>
