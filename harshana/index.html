@@ -20,6 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("anim")</script>
 <style>
 /* VOICE clean product-studio site in the style of the reference: white, airy, precise, two-tone headings
    IDEA a brand journey told like a product flow: stages, floating UI cards, ribbons of brand colour running through
@@ -29,7 +30,8 @@
    LAYOUT centred heads, wide rounded cards, two-column stages; phone stacks with sticky stage tabs */
 :root{color-scheme:light;--bg:#ffffff;--soft:#faf7f3;--ink:#14110e;--mut:#6f6860;--line:#ebe5de;--o:#f79a1e;--r:#f0402b;--p:#ec4d6c;--y:#f6dd3c;--grad:linear-gradient(100deg,#ec4d6c,#f0402b 35%,#f79a1e 70%,#f6c53c);--dark:#14110e}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
+html{scroll-padding-top:100px}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -104,9 +106,38 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .bento figcaption{position:absolute;left:12px;bottom:12px;padding:5px 11px;border-radius:999px;background:rgba(20,17,14,.7);color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(6px)}
 .btsg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px}
 .btsg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
+/* motion system */
+.anim .rv{opacity:0;translate:0 34px;filter:blur(10px);transition:opacity 1s cubic-bezier(.16,1,.3,1),translate 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.anim .rv.in{opacity:1;translate:0 0;filter:blur(0)}
+.anim .hero .ld{opacity:0;translate:0 26px;filter:blur(12px);animation:ld 1.2s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d,0s)}
+@keyframes ld{to{opacity:1;translate:0 0;filter:blur(0)}}
+.stage-card{transform-origin:50% 0;will-change:transform}
+/* pinned process panel */
+.flow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);position:relative}
+.flow .st{display:block;min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding-block:40px}
+.flow .st .ui{display:none}
+.flow .st>div{transition:opacity .5s}
+.flow .st:not(.on)>div{opacity:.28}
+.panel{position:sticky;top:0;height:100vh;display:grid;place-items:center}
+.pbox{position:relative;width:100%;max-width:440px;height:min(520px,70vh)}
+.pbox .ring{position:absolute;inset:-12% -18%;pointer-events:none}
+.pbox .ui{position:absolute;inset:0;display:grid;align-content:center;gap:12px;max-width:none;pointer-events:none}
+.pbox .ui .tag,.pbox .ui .k{opacity:0;translate:0 30px;scale:.94;filter:blur(6px);transition:opacity .55s cubic-bezier(.16,1,.3,1),translate .7s cubic-bezier(.16,1,.3,1),scale .7s cubic-bezier(.16,1,.3,1),filter .55s}
+.pbox .ui.on{pointer-events:auto}
+.pbox .ui.on .tag,.pbox .ui.on .k{opacity:1;translate:0 0;scale:1;filter:blur(0)}
+.pbox .ui.on>*:nth-child(2){transition-delay:.08s}.pbox .ui.on>*:nth-child(3){transition-delay:.16s}.pbox .ui.on>*:nth-child(4){transition-delay:.24s}
+.pbox .ui.out .tag,.pbox .ui.out .k{translate:0 -30px}
+.pnum{position:absolute;right:0;top:0;font:600 13px Inter,sans-serif;color:var(--mut)}
+.pnum b{font:600 44px/1 Geist,Inter,system-ui,sans-serif;letter-spacing:-.04em;color:var(--ink);display:block}
+.ring .trk{fill:none;stroke:#fdebd6;stroke-width:22}
+.ring .prog{fill:none;stroke:url(#rg2);stroke-width:3;stroke-linecap:round}
+.ring .spark{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-dasharray:40 1400;animation:run 6s linear infinite;opacity:.9}
+@media(max-width:720px){.flow{grid-template-columns:minmax(0,1fr)}.panel{display:none}.flow .st{min-height:0;display:grid}.flow .st .ui{display:grid}.flow .st:not(.on)>div{opacity:1}}
+/* stacked cards depth */
+.sc{transform-origin:50% 0;will-change:transform}
 /* process */
-.proc{position:relative;overflow:hidden}
-.ribbon{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.proc{position:relative;overflow:clip}
+.ribbon{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55}
 .ribbon .base{fill:none;stroke:#fdebd6;stroke-width:26;stroke-linecap:round}
 .ribbon .edge{fill:none;stroke:#f9d3a8;stroke-width:1.5}
 .ribbon .run{fill:none;stroke:url(#rg);stroke-width:3;stroke-linecap:round;stroke-dasharray:140 1600;animation:run 9s linear infinite}
@@ -254,10 +285,10 @@ footer a:hover{color:var(--ink)}
 
 <main id="home" class="view on">
  <section class="hero c" id="top"><div class="wrap">
-  <h1>We build brands.<br><span class="g">And the stories that sell them.</span></h1>
-  <p class="lead">Branding and content studio from Sri Lanka. Identities by Sihakuru, brought to life by Sihakuru Labs.</p>
-  <div class="cta"><a class="btn hot" href="#contact">Start a project</a><a class="btn" href="#work">See our work</a></div>
-  <div class="stage-card"><video id="hv" src="/vid/hero.mp4" poster="/vid/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Sihakuru brand film: Not just a logo. Logos, films, reels, stories. Unlock uniqueness."></video><button class="snd" id="snd" type="button" aria-pressed="false"><span id="sndi" style="display:grid"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg></span><span id="sndt">Sound off</span></button></div>
+  <h1 class="ld">We build brands.<br><span class="g">And the stories that sell them.</span></h1>
+  <p class="lead ld" style="--d:.15s">Branding and content studio from Sri Lanka. Identities by Sihakuru, brought to life by Sihakuru Labs.</p>
+  <div class="cta ld" style="--d:.28s"><a class="btn hot" href="#contact">Start a project</a><a class="btn" href="#work">See our work</a></div>
+  <div class="stage-card ld" style="--d:.4s"><video id="hv" src="/vid/hero.mp4" poster="/vid/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Sihakuru brand film: Not just a logo. Logos, films, reels, stories. Unlock uniqueness."></video><button class="snd" id="snd" type="button" aria-pressed="false"><span id="sndi" style="display:grid"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg></span><span id="sndt">Sound off</span></button></div>
  </div>
  <div class="trust"><p>Brands we've built and worked with</p><div class="marq"><div class="row" id="m1"></div></div></div>
  </section>
@@ -281,7 +312,7 @@ footer a:hover{color:var(--ink)}
 
  <section class="band proc" id="process">
   <div class="wrap c"><span class="pill plain">How we build momentum</span><h2 style="margin-top:20px">From first idea<br><span class="g">to a brand people remember.</span></h2><p class="lead">One team takes your brand from the first conversation to the content that keeps it growing.</p></div>
-  <div class="wrap" id="stages" style="position:relative"></div>
+  <div class="wrap" style="position:relative"><div id="ribwrap"></div><div class="flow"><div id="stages"></div><div class="panel" aria-hidden="true"><div class="pbox" id="pbox"></div></div></div></div>
   <div class="tabs"><nav id="tabs"></nav></div>
  </section>
 
@@ -359,6 +390,7 @@ footer a:hover{color:var(--ink)}
 </div></footer>
 <div class="toast" id="toast" role="status"></div>
 
+<script src="/assets/lenis.min.js"></script>
 <script>
 {
 const $=s=>document.querySelector(s);
@@ -397,7 +429,10 @@ const vens=[["Stories by Harshana","Photography and film: people, places and mom
 $("#m1").innerHTML=[...marq,...marq].map(n=>`<span><i></i>${n}</span>`).join("");
 const sw=`<span class="sw"><u style="background:#ec4d6c"></u><u style="background:#f0402b"></u><u style="background:#f79a1e"></u><u style="background:#f6dd3c"></u><u style="background:#14110e"></u></span>`;
 const ribbon=`<svg class="ribbon" viewBox="0 0 1200 3000" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ec4d6c"/><stop offset=".5" stop-color="#f79a1e"/><stop offset="1" stop-color="#f6dd3c"/></linearGradient></defs><path id="rp" class="base" d="M1300 60 C 700 120, 300 260, 520 560 S 1180 820, 900 1180 S 120 1380, 380 1760 S 1150 2050, 820 2420 S 200 2700, -100 2940"/><use href="#rp" class="edge"/><use href="#rp" class="run"/><use href="#rp" class="run" style="animation-delay:-4.5s"/></svg>`;
-$("#stages").innerHTML=ribbon+stages.map((s,i)=>`<div class="st" id="st-${s.id}"><div><span class="pill"><b>${i+1}</b>${s.t}</span><h3>${s.h}</h3><p>${s.p}</p><div class="tools">${s.tools.map(t=>`<span><i></i>${t}</span>`).join("")}</div></div><div class="ui"><span class="tag">▸ ${s.tag}</span>${s.ui.map(u=>`<div class="k"><i>${u[0]}</i><div><small>${u[1]}</small>${u[2]==="sw"?sw:`<b>${u[2]}</b>`}</div></div>`).join("")}</div></div>`).join("");
+$("#ribwrap").innerHTML=ribbon;
+const uiHTML=(s,cls)=>`<div class="ui ${cls}" data-s="${s.id}"><span class="tag">▸ ${s.tag}</span>${s.ui.map(u=>`<div class="k"><i>${u[0]}</i><div><small>${u[1]}</small>${u[2]==="sw"?sw:`<b>${u[2]}</b>`}</div></div>`).join("")}</div>`;
+$("#pbox").innerHTML=`<svg class="ring" viewBox="0 0 600 600" aria-hidden="true"><defs><linearGradient id="rg2" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#ec4d6c"/><stop offset=".5" stop-color="#f79a1e"/><stop offset="1" stop-color="#f6dd3c"/></linearGradient></defs><path id="rp2" class="trk" d="M40 560 C 120 380, 420 520, 330 330 S 160 120, 560 40"/><use href="#rp2" class="prog" id="prog"/><use href="#rp2" class="spark"/></svg><div class="pnum"><b id="pn">01</b>of 0${stages.length}</div>`+stages.map((s,i)=>uiHTML(s,i?"":"on")).join("");
+$("#stages").innerHTML=stages.map((s,i)=>`<div class="st" id="st-${s.id}"><div><span class="pill"><b>${i+1}</b>${s.t}</span><h3>${s.h}</h3><p>${s.p}</p><div class="tools">${s.tools.map(t=>`<span><i></i>${t}</span>`).join("")}</div></div><div class="ui"><span class="tag">▸ ${s.tag}</span>${s.ui.map(u=>`<div class="k"><i>${u[0]}</i><div><small>${u[1]}</small>${u[2]==="sw"?sw:`<b>${u[2]}</b>`}</div></div>`).join("")}</div></div>`).join("");
 $("#tabs").innerHTML=stages.map(s=>`<a href="#st-${s.id}" data-s="${s.id}">${s.t}</a>`).join("");
 $("#flip").innerHTML=logos.slice(0,4).map((l,i)=>`<div style="background:${l[3]};color:${l[4]};font-family:${l[5]?"Georgia,serif":"Geist,Inter,sans-serif"};animation-delay:${i*3}s">${l[0]}</div>`).join("");
 $("#cal").innerHTML=Array.from({length:28},(_,i)=>`<u class="${[2,5,8,11,15,18,22,25].includes(i)?"on":""}" style="animation-delay:-${(i%7)*.4}s"></u>`).join("");
@@ -420,9 +455,37 @@ $("#snd").addEventListener("click",()=>{hv.muted=!hv.muted;if(!hv.muted)hv.play(
 const vIO=new IntersectionObserver(e=>{e[0].isIntersecting?hv.play().catch(()=>{}):hv.pause()});vIO.observe(hv);
 if(matchMedia("(prefers-reduced-motion:reduce)").matches){hv.removeAttribute("autoplay");hv.pause()}
 /* active stage tab */
-const tabIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id.slice(3);document.querySelectorAll("#tabs a").forEach(a=>a.classList.toggle("on",a.dataset.s===id))}}),{rootMargin:"-45% 0px -45% 0px"});
-document.querySelectorAll(".st").forEach(s=>tabIO.observe(s));
-document.querySelector("#tabs a").classList.add("on");
+let cur="";
+const setStage=id=>{if(id===cur)return;const prev=cur;cur=id;const i=stages.findIndex(s=>s.id===id);
+ document.querySelectorAll("#tabs a").forEach(a=>a.classList.toggle("on",a.dataset.s===id));
+ document.querySelectorAll(".flow .st").forEach(s=>s.classList.toggle("on",s.id==="st-"+id));
+ document.querySelectorAll("#pbox .ui").forEach(u=>{u.classList.toggle("on",u.dataset.s===id);u.classList.toggle("out",u.dataset.s===prev)});
+ const pn=$("#pn");if(pn)pn.textContent=String(i+1).padStart(2,"0")};
+const tabIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setStage(e.target.id.slice(3))}),{rootMargin:"-45% 0px -45% 0px"});
+document.querySelectorAll(".flow .st").forEach(s=>tabIO.observe(s));
+setStage(stages[0].id);
+/* reveal on scroll */
+const RV=[".band .c",".sub",".logos>*",".fgrid2>*",".bento figure",".sys .sc",".fcard",".stat",".ctabox",".trust",".flow .st>div",".rows>div",".chips",".vens>*",".fgrid>*",".cgrid",".btsg img",".tags"];
+const markRV=root=>{RV.forEach(q=>root.querySelectorAll(q).forEach((el,i)=>{if(el.closest(".hero")&&!el.closest(".trust"))return;if(el.classList.contains("rv"))return;el.classList.add("rv");if(!el.style.getPropertyValue("--d"))el.style.setProperty("--d",(i%4)*0.09+"s");rvIO.observe(el)}))};
+const rvIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rvIO.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+markRV(document);
+/* scroll-linked motion */
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const prog=$("#prog");let plen=0;if(prog){plen=$("#rp2").getTotalLength();prog.style.strokeDasharray=plen;prog.style.strokeDashoffset=plen}
+const card=$(".stage-card"),flow=$(".flow"),scs=[...document.querySelectorAll(".sys .sc")];
+const still=!document.documentElement.classList.contains("anim");
+const tick=()=>{if(still)return;const vh=innerHeight;
+ if(card&&$("#home").classList.contains("on")){const r=card.getBoundingClientRect();const p=clamp((vh-r.top)/(vh*.9));card.style.transform=`scale(${(.9+.1*p).toFixed(4)})`}
+ if(flow&&prog){const r=flow.getBoundingClientRect();const p=clamp((vh*.5-r.top)/(r.height-vh*.5));prog.style.strokeDashoffset=(plen*(1-p)).toFixed(1)}
+ if(innerWidth>900)scs.forEach((c,i)=>{const n=scs[i+1];if(!n){c.style.transform="";return}const a=c.getBoundingClientRect(),b=n.getBoundingClientRect();const p=clamp(1-(b.top-a.top)/a.height);c.style.transform=`scale(${(1-.06*p).toFixed(4)})`;c.style.filter=`brightness(${(1-.12*p).toFixed(3)})`});
+};
+let lenis=null;
+if(!still&&window.Lenis){lenis=new Lenis({lerp:.09,smoothWheel:true,wheelMultiplier:1});lenis.on("scroll",tick);const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
+else addEventListener("scroll",tick,{passive:true});
+addEventListener("resize",tick);tick();
+window.__sk={lenis,tick,markRV};
+document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute("href").slice(1);const el=id&&document.getElementById(id);
+ if(el&&$("#home").classList.contains("on")&&$("#home").contains(el)){e.preventDefault();history.replaceState(null,"",location.pathname);lenis?lenis.scrollTo(el,{offset:id==="top"?0:-90,duration:1.4}):el.scrollIntoView({behavior:"smooth"})}});
 /* counters */
 const cIO=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const b=e.target,n=+b.dataset.n,s=b.dataset.s,t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/1200);b.textContent=Math.round(n*(1-(1-k)**3))+s;if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step);cIO.unobserve(b)}),{threshold:.6});
 document.querySelectorAll(".stat b").forEach(b=>cIO.observe(b));
@@ -441,11 +504,12 @@ const route=()=>{let h=location.hash.slice(1);if(!h&&/^\/harshana\/?$/.test(loca
  else if(h==="harshana"){v="founder";document.title="Harshana Rajapaksha · Sihakuru"}
  else if(h==="brands"){v="brands";document.title="Brand identities · Sihakuru"}
  else if(h==="production"){v="production";document.title="Production & social · Sihakuru Labs"}
- if(v==="home")document.title=location.pathname.startsWith("/harshana")&&!location.hash?"Harshana Rajapaksha · Sihakuru":"Sihakuru Studio";
+ if(v==="home")document.title=location.pathname.startsWith("/harshana")&&!location.hash?"Harshana Rajapaksha · Sihakuru":"Sihakuru · Branding & content studio";
  const was=document.querySelector(".view.on").id;
  document.querySelectorAll(".view").forEach(m=>m.classList.toggle("on",m.id===v));
  document.querySelectorAll(".links a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+(v==="founder"?"harshana":h)));
- if(v!=="home"||was!=="home"){if(v==="home"&&h)requestAnimationFrame(()=>document.getElementById(h)?.scrollIntoView());else scrollTo(0,0)}
+ if(v!=="home"||was!=="home"){if(v==="home"&&h)requestAnimationFrame(()=>{const el=document.getElementById(h);if(el)(window.__sk?.lenis?window.__sk.lenis.scrollTo(el,{offset:-90,immediate:true}):el.scrollIntoView())});else{window.__sk?.lenis?window.__sk.lenis.scrollTo(0,{immediate:true}):scrollTo(0,0)}}
+ requestAnimationFrame(()=>{window.__sk?.markRV(document.getElementById(v));window.__sk?.tick()})
 };
 addEventListener("hashchange",route);route();
 }
