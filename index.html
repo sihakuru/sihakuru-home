@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
 <title>Sihakuru · Branding & content studio</title>
 <meta name="description" content="We build brands and the stories that sell them. Brand identities by Sihakuru, film, photography and social media by Sihakuru Labs. Sri Lanka.">
 <link rel="canonical" href="https://sihakuru.com/">
@@ -28,11 +30,12 @@
    COLOUR white ground, ink #14110e, brand gradient pink-red-orange-yellow for accents, warm wash at top and bottom
    TYPE Geist for headings + Inter for text
    LAYOUT centred heads, wide rounded cards, two-column stages; phone stacks with sticky stage tabs */
-:root{color-scheme:light;--bg:#ffffff;--soft:#faf7f3;--ink:#14110e;--mut:#6f6860;--line:#ebe5de;--o:#f79a1e;--r:#f0402b;--p:#ec4d6c;--y:#f6dd3c;--grad:linear-gradient(100deg,#ec4d6c,#f0402b 35%,#f79a1e 70%,#f6c53c);--dark:#14110e}
+:root{color-scheme:only light;--bg:#ffffff;--soft:#faf7f3;--ink:#14110e;--mut:#6f6860;--line:#ebe5de;--o:#f79a1e;--r:#f0402b;--p:#ec4d6c;--y:#f6dd3c;--grad:linear-gradient(100deg,#ec4d6c,#f0402b 35%,#f79a1e 70%,#f6c53c);--dark:#14110e}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:100px}
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 h1,h2,h3{font-family:Geist,Inter,sans-serif;font-weight:600;letter-spacing:-.035em;line-height:1.04;margin:0;text-wrap:balance}
@@ -106,6 +109,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .bento figcaption{position:absolute;left:12px;bottom:12px;padding:5px 11px;border-radius:999px;background:rgba(20,17,14,.7);color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(6px)}
 .btsg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px}
 .btsg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
+.ar{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-2px}
+.ico{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 /* motion system */
 .anim .rv{opacity:0;translate:0 34px;filter:blur(10px);transition:opacity 1s cubic-bezier(.16,1,.3,1),translate 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
 .anim .rv.in{opacity:1;translate:0 0;filter:blur(0)}
@@ -271,6 +276,77 @@ footer a:hover{color:var(--ink)}
 @media(max-width:900px){.links,.nav .btn{display:none}.menu{display:block}.links.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;padding:8px;border-radius:16px;background:rgba(20,17,14,.96)}.links.open a{padding:14px}.logos{grid-template-columns:repeat(3,minmax(0,1fr))}.sc{position:relative;top:auto!important}.vens{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:720px){.fgrid2{grid-template-columns:minmax(0,1fr)}.bento{grid-template-rows:repeat(3,110px);order:-1}.btsg{grid-template-columns:repeat(2,minmax(0,1fr))}.ribbon{opacity:.45}.st,.sc,.fcard,.cgrid,.two{grid-template-columns:minmax(0,1fr)}.ui{justify-self:start}.stage-card{border-radius:18px;margin-top:44px}.snd{right:10px;bottom:10px;min-height:34px;padding:0 10px;font-size:13px}.snd #sndt{display:none}.labs{grid-template-columns:minmax(0,1fr)}.fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fgrid>div:first-child{grid-column:1/-1}.por{aspect-ratio:16/11}.bts{grid-template-columns:repeat(2,minmax(0,1fr))}.bts div:last-child{display:none}}
 @media(max-width:520px){.logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stat{padding:14px 18px}}
+  
+/* ===== phone layout ===== */
+@media(max-width:600px){
+.band{padding-block:64px}
+.wrap{padding-inline:18px}
+h2{font-size:clamp(28px,8.4vw,36px);letter-spacing:-.03em}
+h3{font-size:24px}
+.lead{font-size:16px;margin-top:14px}
+.pill{font-size:13px}
+.nav{top:max(10px,env(safe-area-inset-top));width:calc(100% - 20px);padding:6px 6px 6px 14px;border-radius:14px}
+.links.open{background:#fff;border:1px solid var(--line);box-shadow:0 20px 40px rgba(20,17,14,.15)}
+.links.open a{color:var(--ink);font-size:17px;border-radius:10px}
+.links.open a:hover,.links.open a.on{background:var(--soft);color:var(--ink)}
+.hero{padding-top:112px}
+.hero h1{font-size:clamp(34px,10vw,42px);line-height:1.05}
+.hero .cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin:26px auto 0}
+.hero .cta .btn{padding:0 12px;font-size:15px}
+.stage-card{margin-top:36px;border-radius:18px;box-shadow:0 24px 50px -24px rgba(120,50,0,.35)}
+.trust{padding:40px 0 8px}
+.marq span{font-size:15px;padding:10px 16px;border-radius:12px}
+.feat{padding-top:24px}
+.fgrid2{margin-top:32px;gap:12px}
+.bento{grid-template-rows:repeat(3,96px);gap:8px}
+.bento figure{border-radius:14px}
+.bento figcaption{font-size:12px;left:8px;bottom:8px}
+.finfo{border-radius:20px;padding:22px}
+.finfo h3{font-size:24px}
+.facts2 li{font-size:14px}
+.tabs{display:none}
+.ribbon{opacity:.4}
+.st{padding-block:36px;gap:22px}
+.st h3{font-size:28px;margin:14px 0 10px}
+.st p{font-size:16px}
+.tools{gap:8px;margin-top:18px}
+.tools span{padding:8px 12px;font-size:14px;border-radius:10px}
+.tools i{width:18px;height:18px;border-radius:6px}
+.ui{max-width:none;gap:10px}
+.ui .k{padding:12px 14px;gap:12px;border-radius:14px;border-color:#e2d9cf;animation:none}
+.ui .k:nth-child(2){margin-left:0}
+.ui .k>i{width:36px;height:36px}
+.sys{margin-top:36px;gap:16px}
+.sc{padding:22px;border-radius:22px;gap:20px}
+.sc h3{font-size:28px}
+.sc p{font-size:16px}
+.vis{min-height:220px;border-radius:16px}
+.sub{margin:40px 0 16px}
+.sub h3{font-size:22px}
+.logos{gap:12px}
+.lg .tile,.lb .cv{border-radius:16px}
+.lg h4,.lb h4{font-size:15px}
+.lg p,.lb p{font-size:13px}
+.lb .cv{padding:14px}
+.lb .cv b{font-size:18px}
+.fb{border-radius:24px;margin-inline:8px}
+.fcard{margin-top:32px;padding:14px;border-radius:20px;gap:20px}
+.por{aspect-ratio:4/3;border-radius:14px}
+.fcard blockquote{font-size:20px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
+.stat{flex-direction:column;align-items:flex-start;gap:6px;padding:16px;border-radius:16px}
+.stat b{font-size:38px}
+.stat span{font-size:14px}
+.ctabox{margin-top:64px}
+.ctabox .cta{display:grid;gap:10px;max-width:360px;margin:26px auto 0}
+.ways a{font-size:14px}
+footer{padding:40px 0 28px}
+.fgrid{gap:24px}
+.chero{padding-top:110px}
+.fhero{padding-top:120px}
+.rows b{font-size:18px}
+}
+
 /* reduced-motion: keep loops and fades, drop travel, blur, scale and inertia */
 .calm .rv,.calm .hero .ld{translate:0 0!important;filter:none!important}
 .calm .ui .k{animation:none}
@@ -295,7 +371,7 @@ footer a:hover{color:var(--ink)}
  </section>
 
  <section class="band feat" id="featured"><div class="wrap">
-  <div class="c"><span class="pill"><b>▶</b>Featured production · Sihakuru Labs</span><h2 style="margin-top:20px">Corporate commercial<br><span class="g">for Autoways (PVT) Ltd.</span></h2><p class="lead">On location with one of Sri Lanka's leaders in tyre rebuilding and manufacturing, filming the strength and precision behind their work.</p></div>
+  <div class="c"><span class="pill"><b><svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true"><path d="M7 4v16l13-8z" fill="currentColor"/></svg></b>Featured production · Sihakuru Labs</span><h2 style="margin-top:20px">Corporate commercial<br><span class="g">for Autoways (PVT) Ltd.</span></h2><p class="lead">On location with one of Sri Lanka's leaders in tyre rebuilding and manufacturing, filming the strength and precision behind their work.</p></div>
   <div class="fgrid2">
    <div class="finfo"><span class="live"><i></i>Behind the scenes</span><h3>From concept to execution, across the island.</h3><p>Two location shoots at the Anuradhapura and Kuruwita branches, capturing operations, technical processes and the scale of a nationwide business.</p>
     <ul class="facts2"><li><span>Project</span><b>Corporate commercial</b></li><li><span>Client</span><b>Autoways (PVT) Ltd</b></li><li><span>Industry</span><b>Manufacturing &amp; tyre rebuilding</b></li><li><span>Locations</span><b>Anuradhapura · Kuruwita</b></li></ul>
@@ -332,7 +408,7 @@ footer a:hover{color:var(--ink)}
   <div class="logos" id="logos"></div>
   <div class="sub"><h3>Production &amp; social</h3><a class="pill plain" href="#production">View all →</a></div>
   <div class="logos" id="labs"></div>
-  <div class="c" style="margin-top:36px"><a class="btn" href="https://portfolio.sihakuru.com">Watch our reels ↗</a></div>
+  <div class="c" style="margin-top:36px"><a class="btn" href="https://portfolio.sihakuru.com">Watch our reels <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
  </div></section>
 
  <section class="band fb"><div class="wrap">
@@ -347,7 +423,7 @@ footer a:hover{color:var(--ink)}
   <div class="stats" id="stats"></div>
   <div class="ctabox"><span class="pill plain">Make it happen</span><h2 style="margin-top:20px">Ready to stand out?<br><span class="g">Let's get started.</span></h2><p class="lead">Tell us about your business. We usually reply on WhatsApp within a day.</p>
    <div class="cta"><a class="btn hot" href="https://wa.me/94772617756?text=Hi%20Sihakuru!%20I'd%20like%20to%20talk%20about%20a%20project.">Message on WhatsApp</a><a class="btn" href="mailto:hello@sihakuru.com">hello@sihakuru.com</a></div>
-   <div class="ways"><a href="https://wa.me/94772617756">+94 77 261 7756</a><a href="https://facebook.com/Sihakuru">Facebook ↗</a><a href="https://portfolio.sihakuru.com">Reels ↗</a></div></div>
+   <div class="ways"><a href="https://wa.me/94772617756">+94 77 261 7756</a><a href="https://facebook.com/Sihakuru">Facebook <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://portfolio.sihakuru.com">Reels <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div></div>
  </div></section>
 </main>
 
@@ -360,7 +436,7 @@ footer a:hover{color:var(--ink)}
 
 <main id="production" class="view">
  <section class="chero"><div class="wrap c"><a class="pill plain" href="#work">← Back to home</a><h1 style="font-size:clamp(42px,6.4vw,84px);margin-top:20px">Production &amp; social<br><span class="g">by Sihakuru Labs.</span></h1><p class="lead">Commercials, hotel shoots, reels and social media work. Open a project for the story behind it.</p></div></section>
- <section class="band" style="padding-top:56px"><div class="wrap"><div class="logos" id="allLabs"></div><div class="c" style="margin-top:36px"><a class="btn" href="https://portfolio.sihakuru.com">Watch all reels ↗</a></div></div></section>
+ <section class="band" style="padding-top:56px"><div class="wrap"><div class="logos" id="allLabs"></div><div class="c" style="margin-top:36px"><a class="btn" href="https://portfolio.sihakuru.com">Watch all reels <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div></div></section>
 </main>
 
 <main id="founder" class="view">
@@ -368,7 +444,7 @@ footer a:hover{color:var(--ink)}
   <div class="av">HR</div>
   <h1>Harshana Rajapaksha<br><span class="g">Founder &amp; CEO, Sihakuru</span></h1>
   <p class="lead">Graphic designer, filmmaker and visual storyteller, building brands and the stories that sell them.</p>
-  <div class="cta"><button class="btn hot" id="copy" type="button">Copy profile link</button><a class="btn" href="https://wa.me/94772617756">WhatsApp</a><a class="btn" href="https://instagram.com/rajapaksha_h_">Instagram ↗</a></div>
+  <div class="cta"><button class="btn hot" id="copy" type="button">Copy profile link</button><a class="btn" href="https://wa.me/94772617756">WhatsApp</a><a class="btn" href="https://instagram.com/rajapaksha_h_">Instagram <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
  </div></section>
  <section class="band" style="padding-top:40px"><div class="wrap two">
   <div><span class="pill plain">Background</span><h2 style="margin-top:20px;font-size:clamp(30px,3.6vw,46px)">Design, film<br><span class="g">and everything between.</span></h2><p class="mut" style="margin-top:18px;max-width:46ch">I came to design through interactive media and stayed for the moment a brand clicks. Today I lead creative direction at Sihakuru, and still sketch the logos and hold the camera myself.</p><div class="chips" id="skills"></div></div>
@@ -416,12 +492,14 @@ const cases=[
  {s:"world-vision",n:"World Vision",t:"NGO",g:"linear-gradient(150deg,#3b1b0c,#e5641f,#f6b04a,#e5641f)",k:"#fff6ee",p:"Video content that tells real stories from the field, honestly and with respect for the people in them.",d:["Video content","Reels"]}
 ];
 const marq=["Autoways","Lamprai Station","Yaggapitiya Junction","Saludiya Retreat","Serendib Spice & Grill","Sky Cafe","Clara Villas","AWD Furniture","Ayurdi Ayurveda","World Vision","Cinnastick Ceylon","Lumera Salon","Underworld Fitness","Liora Herbal","Magic of Ceylon","Armoire"];
+const IC={spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',grid:'<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',pen:'<path d="M12 19l7-7 2 2-7 7z"/><path d="M18 13 16.5 5.5 3 3l2.5 13.5L13 18z"/><path d="M3 3l7.6 7.6"/><circle cx="11" cy="11" r="2"/>',palette:'<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1-.1-2.2 1.2-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/>',badge:'<path d="M20 6 9 17l-5-5"/>',camera:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3z"/>',scissors:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>',contrast:'<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="#fff"/>',insta:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#fff"/>',page:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',printer:'<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',play:'<path d="M7 4v16l13-8z" fill="#fff"/>',chart:'<path d="M4 20h16"/><path d="m4 15 5-5 4 4 7-7"/><path d="M15 7h5v5"/>'};
+const icon=k=>`<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${IC[k]||""}</svg>`;
 const stages=[
- {id:"discover",t:"Discover",h:"Understand the business",p:"We start with a call or a visit to learn your business, your customers and what makes you different.",tools:["Brand workshop","Site visit","Moodboards"],ui:[["✦","New brief","Boutique hotel · Branding + reels"],["◎","Site visit","Booked for Saturday"],["▦","Moodboard","24 references collected"]],tag:"New project"},
- {id:"identity",t:"Identity",h:"Design the brand",p:"Logo, colours, type and voice, shaped into a system that works on a sign, a menu and a feed.",tools:["Logo","Colour & type","Guidelines"],ui:[["A","Logo concepts","3 directions ready"],["●","Colour palette","sw"],["✓","Brand guidelines","Approved"]],tag:"Sihakuru"},
- {id:"content",t:"Content",h:"Shoot and create",p:"Sihakuru Labs brings the brand to life with film, photography and motion, planned around your best moments.",tools:["Commercials","Hotel photography","Reels"],ui:[["▶","Shoot day","Rooms, dining, pool"],["✂","Reel 01","Editing"],["◐","Promo video","Colour grade"]],tag:"Sihakuru Labs"},
- {id:"launch",t:"Launch",h:"Go live together",p:"We roll the brand out everywhere at once, so the first impression is a consistent one.",tools:["Instagram","Facebook","Print"],ui:[["◉","Instagram","Launch post scheduled"],["f","Facebook page","Cover & profile updated"],["▣","Print","Menus sent to printer"]],tag:"Launch week"},
- {id:"grow",t:"Grow",h:"Keep it moving",p:"Monthly social media care keeps your brand showing up, with fresh content and a clear plan every month.",tools:["Content plan","Posting","Monthly report"],ui:[["▤","Content plan","Next month ready"],["▶","Reels calendar","8 reels planned"],["↗","Monthly report","Sent to client"]],tag:"Every month"}
+ {id:"discover",t:"Discover",h:"Understand the business",p:"We start with a call or a visit to learn your business, your customers and what makes you different.",tools:["Brand workshop","Site visit","Moodboards"],ui:[["spark","New brief","Boutique hotel · Branding + reels"],["pin","Site visit","Booked for Saturday"],["grid","Moodboard","24 references collected"]],tag:"New project"},
+ {id:"identity",t:"Identity",h:"Design the brand",p:"Logo, colours, type and voice, shaped into a system that works on a sign, a menu and a feed.",tools:["Logo","Colour & type","Guidelines"],ui:[["pen","Logo concepts","3 directions ready"],["palette","Colour palette","sw"],["badge","Brand guidelines","Approved"]],tag:"Sihakuru"},
+ {id:"content",t:"Content",h:"Shoot and create",p:"Sihakuru Labs brings the brand to life with film, photography and motion, planned around your best moments.",tools:["Commercials","Hotel photography","Reels"],ui:[["camera","Shoot day","Rooms, dining, pool"],["scissors","Reel 01","Editing"],["contrast","Promo video","Colour grade"]],tag:"Sihakuru Labs"},
+ {id:"launch",t:"Launch",h:"Go live together",p:"We roll the brand out everywhere at once, so the first impression is a consistent one.",tools:["Instagram","Facebook","Print"],ui:[["insta","Instagram","Launch post scheduled"],["page","Facebook page","Cover & profile updated"],["printer","Print","Menus sent to printer"]],tag:"Launch week"},
+ {id:"grow",t:"Grow",h:"Keep it moving",p:"Monthly social media care keeps your brand showing up, with fresh content and a clear plan every month.",tools:["Content plan","Posting","Monthly report"],ui:[["calendar","Content plan","Next month ready"],["play","Reels calendar","8 reels planned"],["chart","Monthly report","Sent to client"]],tag:"Every month"}
 ];
 const exp=[["Founder & CEO, Sihakuru","Leading creative direction across branding, film, photography and social media.","Now"],["Founder, Sihakuru Labs","Commercials, hotel promos, reels and social media management.","Now"],["Graphic Designer","Visual content for social media, campaigns, events and print.","2024 – now"],["BSc in Information Technology","Specialised in Interactive Media.","Degree"]];
 const skills=["Brand identity","Graphic design","Creative direction","Motion graphics","Video editing","Cinematography","Photography","Social media"];
@@ -431,7 +509,7 @@ $("#m1").innerHTML=[...marq,...marq].map(n=>`<span><i></i>${n}</span>`).join("")
 const sw=`<span class="sw"><u style="background:#ec4d6c"></u><u style="background:#f0402b"></u><u style="background:#f79a1e"></u><u style="background:#f6dd3c"></u><u style="background:#14110e"></u></span>`;
 const RP="M1300 60 C 700 120, 300 260, 520 560 S 1180 820, 900 1180 S 120 1380, 380 1760 S 1150 2050, 820 2420 S 200 2700, -100 2940";
 const ribbon=`<svg class="ribbon" id="ribsvg" viewBox="0 0 1200 3000" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ec4d6c"/><stop offset=".5" stop-color="#f79a1e"/><stop offset="1" stop-color="#f6dd3c"/></linearGradient><mask id="rmask" maskUnits="userSpaceOnUse" x="-200" y="0" width="1600" height="3000"><path id="rmp" d="${RP}" pathLength="1000" fill="none" stroke="#fff" stroke-width="60" stroke-linecap="round" stroke-dasharray="1000 1000" stroke-dashoffset="1000"/></mask></defs><g mask="url(#rmask)"><path id="rp" class="base" d="${RP}"/><use href="#rp" class="edge"/><path class="core" d="${RP}"/><use href="#rp" class="run"/><use href="#rp" class="run" style="animation-delay:-4.5s"/></g><circle id="pen" r="9" class="pen"/></svg>`;
-$("#stages").innerHTML=ribbon+stages.map((s,i)=>`<div class="st" id="st-${s.id}"><div><span class="pill"><b>${i+1}</b>${s.t}</span><h3>${s.h}</h3><p>${s.p}</p><div class="tools">${s.tools.map(t=>`<span><i></i>${t}</span>`).join("")}</div></div><div class="ui"><span class="tag">${s.tag}</span>${s.ui.map((u,j)=>`<div class="k" style="--j:${j}"><i>${u[0]}</i><div class="kx"><small>${u[1]}</small>${u[2]==="sw"?sw:`<b>${u[2]}</b>`}<u class="bar"><em></em></u></div><span class="ok">✓</span></div>`).join("")}</div></div>`).join("");
+$("#stages").innerHTML=ribbon+stages.map((s,i)=>`<div class="st" id="st-${s.id}"><div><span class="pill"><b>${i+1}</b>${s.t}</span><h3>${s.h}</h3><p>${s.p}</p><div class="tools">${s.tools.map(t=>`<span><i></i>${t}</span>`).join("")}</div></div><div class="ui"><span class="tag">${s.tag}</span>${s.ui.map((u,j)=>`<div class="k" style="--j:${j}"><i>${icon(u[0])}</i><div class="kx"><small>${u[1]}</small>${u[2]==="sw"?sw:`<b>${u[2]}</b>`}<u class="bar"><em></em></u></div><span class="ok"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>`).join("")}</div></div>`).join("");
 $("#tabs").innerHTML=stages.map(s=>`<a href="#st-${s.id}" data-s="${s.id}">${s.t}</a>`).join("");
 $("#flip").innerHTML=logos.slice(0,4).map((l,i)=>`<div style="background:${l[3]};color:${l[4]};font-family:${l[5]?"Georgia,serif":"Geist,Inter,sans-serif"};animation-delay:${i*3}s">${l[0]}</div>`).join("");
 $("#cal").innerHTML=Array.from({length:28},(_,i)=>`<u class="${[2,5,8,11,15,18,22,25].includes(i)?"on":""}" style="animation-delay:-${(i%7)*.4}s"></u>`).join("");
