@@ -81,10 +81,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .trust{padding:56px 0 24px}
 .trust p{text-align:center;color:var(--mut);font-size:14px}
 .marq{overflow:hidden;margin-top:22px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.marq .row{display:flex;gap:14px;width:max-content;animation:slide 45s linear infinite}
-.marq.rev .row{animation-direction:reverse}
-.marq span{white-space:nowrap;padding:14px 22px;border:1px solid var(--line);border-radius:14px;font:600 17px Geist,Inter,system-ui,sans-serif;letter-spacing:-.01em;background:#fff;display:flex;align-items:center;gap:10px}
-.marq span i{width:22px;height:22px;border-radius:7px;background:var(--grad);opacity:.85}
+.marq+.marq{margin-top:12px}
+.marq .row{display:flex;gap:12px;width:max-content;animation:slide 70s linear infinite}
+.marq.rev .row{animation-direction:reverse;animation-duration:80s}
+.marq:hover .row{animation-play-state:paused}
+.tile{flex:none;width:176px;height:96px;display:grid;place-items:center;padding:16px 22px;background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .25s,box-shadow .25s,transform .25s}
+.tile img{max-width:100%;max-height:56px;width:auto;height:auto;object-fit:contain}
+.tile.sq img{max-height:68px}
+.tile.dk{background:var(--ink);border-color:var(--ink)}
+.tile.dk.bk{background:#000;border-color:#000}
+.tile:hover{border-color:#f3c9a8;box-shadow:0 14px 30px -18px rgba(150,70,0,.45);transform:translateY(-2px)}
 @keyframes slide{to{transform:translateX(-50%)}}
 /* featured production */
 .feat{padding-top:clamp(40px,6vw,80px)}
@@ -295,7 +301,7 @@ h3{font-size:24px}
 .hero .cta .btn{padding:0 12px;font-size:15px}
 .stage-card{margin-top:36px;border-radius:18px;box-shadow:0 24px 50px -24px rgba(120,50,0,.35)}
 .trust{padding:40px 0 8px}
-.marq span{font-size:15px;padding:10px 16px;border-radius:12px}
+.tile{width:136px;height:76px;padding:12px 16px;border-radius:12px}.tile img{max-height:44px}.tile.sq img{max-height:54px}
 .feat{padding-top:24px}
 .fgrid2{margin-top:32px;gap:12px}
 .bento{grid-template-rows:repeat(3,96px);gap:8px}
@@ -378,7 +384,7 @@ footer{padding:40px 0 28px}
   <div class="cta ld" style="--d:.28s"><a class="btn hot" href="#contact">Start a project</a><a class="btn" href="#work">See our work</a></div>
   <div class="stage-card ld" style="--d:.4s"><video id="hv" src="/vid/hero.mp4" poster="/vid/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Sihakuru brand film: Not just a logo. Logos, films, reels, stories. Unlock uniqueness."></video><button class="snd" id="snd" type="button" aria-pressed="false"><span id="sndi" style="display:grid"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg></span><span id="sndt">Sound off</span></button></div>
  </div>
- <div class="trust"><p>Brands we've built and worked with</p><div class="marq"><div class="row" id="m1"></div></div></div>
+ <div class="trust"><p>Brands we've built and worked with</p><div class="marq"><div class="row" id="m1"></div></div><div class="marq rev"><div class="row" id="m2"></div></div></div>
  </section>
 
  <section class="band feat" id="featured"><div class="wrap">
@@ -502,7 +508,9 @@ const cases=[
  {s:"awd-furniture",n:"AWD Furniture",t:"Retail",g:"linear-gradient(150deg,#2a2420,#7a5a3e,#d9b98c,#7a5a3e)",k:"#fff7ec",p:"Product reels that show the grain, finish and scale of each piece better than photos can.",d:["Product reels","Social video"]},
  {s:"world-vision",n:"World Vision",t:"NGO",g:"linear-gradient(150deg,#3b1b0c,#e5641f,#f6b04a,#e5641f)",k:"#fff6ee",p:"Video content that tells real stories from the field, honestly and with respect for the people in them.",d:["Video content","Reels"]}
 ];
-const marq=["Autoways","Lamprai Station","Yaggapitiya Junction","Saludiya Retreat","Serendib Spice & Grill","Sky Cafe","Clara Villas","AWD Furniture","Ayurdi Ayurveda","World Vision","Cinnastick Ceylon","Lumera Salon","Underworld Fitness","Liora Herbal","Magic of Ceylon","Armoire"];
+const marq=[["lamprai-station","Lamprai Station"],["autoways","Autoways"],["clara-villas","Clara Villas"],["yaggapitiya-junction","Yaggapitiya Junction",1],["serandib-spice-and-grill","Serendib Spice & Grill"],["underworld-fitness","Underworld Fitness"],["liora-herbal","Liora Herbal"],["lumera-salon","Lumera Salon"],["magic-of-ceylon","Magic of Ceylon",1],["cinnastick-ceylon","Cinnastick Ceylon"],["armoire","Armoire"],["ayurdi","Ayurdi Ayurveda"],["awd-furniture","AWD Furniture"],["ananthara","Ananthara"],["ceyonic","Ceyonic"],["inner-peace","Inner Peace",1],["luxe","Luxe Crete"],["piyumal-auto-scanning","Piyumal Auto Scanning"],["rohana-auto-service","Rohana Auto Service"],["signature","Signature"],
+["a-world-travels","A World Travels"],["athpasura","Athpasura"],["dreamfyre-blacktext","Dreamfyre"],["dreamfyre-education","Dreamfyre Education"],["elegant-clothing","Elegant Clothing",2],["emark","Emark",1],["full-color","Radiant Skin Clinic"],["hasthi-ceylon","Hasthi Ceylon"],["kandk-pharmacy","K&K Pharmacy"],["korean-food-revamp","Rimyo Korean Food"],["louisa","Louisa Ceylon"],["memory","Memory"],["pepper-pal","Pepper Pal"],["salon-yora","Salon Yora",1],["sit-alone","Sit Alone"],["smiley-home","Smiley Home"],["sobasri","Soba Sri"],["solace","Solace Investment"],["sunflower","Sunflower Creations"],["thoga-kade","Thoga Kade"],["vishaka-ayurveda","Vishaka Ayurveda"]];
+const SQ=new Set(["dreamfyre-blacktext", "vishaka-ayurveda", "hasthi-ceylon", "a-world-travels", "salon-yora", "full-color", "ayurdi", "serandib-spice-and-grill", "athpasura", "magic-of-ceylon", "kandk-pharmacy", "dreamfyre-education", "ananthara", "thoga-kade", "lamprai-station", "pepper-pal", "armoire"]);
 const IC={spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',grid:'<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',pen:'<path d="M12 19l7-7 2 2-7 7z"/><path d="M18 13 16.5 5.5 3 3l2.5 13.5L13 18z"/><path d="M3 3l7.6 7.6"/><circle cx="11" cy="11" r="2"/>',palette:'<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1-.1-2.2 1.2-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/>',badge:'<path d="M20 6 9 17l-5-5"/>',camera:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3z"/>',scissors:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>',contrast:'<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="#fff"/>',insta:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#fff"/>',page:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',printer:'<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',play:'<path d="M7 4v16l13-8z" fill="#fff"/>',chart:'<path d="M4 20h16"/><path d="m4 15 5-5 4 4 7-7"/><path d="M15 7h5v5"/>'};
 const icon=k=>`<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${IC[k]||""}</svg>`;
 const stages=[
@@ -516,7 +524,8 @@ const exp=[["Founder & CEO, Sihakuru","Leading creative direction across brandin
 const skills=["Brand identity","Graphic design","Creative direction","Motion graphics","Video editing","Cinematography","Photography","Social media"];
 const vens=[["Stories by Harshana","Photography and film: people, places and moments.","linear-gradient(135deg,#ec4d6c,#f79a1e,#ec4d6c)"],["RawTrails by Harshana","Hikes, camps and random adventures across Sri Lanka.","linear-gradient(135deg,#2f7f75,#cfe2b8,#2f7f75)"],["Concert reels","Live music and event reels, on camera and mobile.","linear-gradient(135deg,#1b3b6f,#ec4d6c,#1b3b6f)"]];
 
-$("#m1").innerHTML=[...marq,...marq].map(n=>`<span><i></i>${n}</span>`).join("");
+const tile=([f,n,d])=>{const t=n.replace(/&/g,"&amp;");return `<div class="tile${d?" dk":""}${d===2?" bk":""}${SQ.has(f)?" sq":""}" title="${t}"><img src="/assets/clients/${f}.webp" alt="${t}" width="176" height="96" loading="lazy" decoding="async"></div>`};
+{const h=Math.ceil(marq.length/2),a=marq.slice(0,h),b=marq.slice(h);$("#m1").innerHTML=[...a,...a].map(tile).join("");$("#m2").innerHTML=[...b,...b].map(tile).join("")}
 const sw=`<span class="sw"><u style="background:#ec4d6c"></u><u style="background:#f0402b"></u><u style="background:#f79a1e"></u><u style="background:#f6dd3c"></u><u style="background:#14110e"></u></span>`;
 const RP="M1300 60 C 700 120, 300 260, 520 560 S 1180 820, 900 1180 S 120 1380, 380 1760 S 1150 2050, 820 2420 S 200 2700, -100 2940";
 const ribbon=`<svg class="ribbon" id="ribsvg" viewBox="0 0 1200 3000" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ec4d6c"/><stop offset=".5" stop-color="#f79a1e"/><stop offset="1" stop-color="#f6dd3c"/></linearGradient><mask id="rmask" maskUnits="userSpaceOnUse" x="-200" y="0" width="1600" height="3000"><path id="rmp" d="${RP}" pathLength="1000" fill="none" stroke="#fff" stroke-width="60" stroke-linecap="round" stroke-dasharray="1000 1000" stroke-dashoffset="1000"/></mask></defs><g mask="url(#rmask)"><path id="rp" class="base" d="${RP}"/><use href="#rp" class="edge"/><path class="core" d="${RP}"/><use href="#rp" class="run"/><use href="#rp" class="run" style="animation-delay:-4.5s"/></g></svg><span class="pen" id="pen" aria-hidden="true"></span>`;
