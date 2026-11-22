@@ -81,13 +81,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .trust{padding:56px 0 24px}
 .trust p{text-align:center;color:var(--mut);font-size:14px}
 .marq{overflow:hidden;margin-top:22px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.marq+.marq{margin-top:12px}
-.marq .row{display:flex;gap:12px;width:max-content;animation:slide 70s linear infinite}
+.marq+.marq{margin-top:10px}
+.marq .row{display:flex;gap:10px;width:max-content;animation:slide 70s linear infinite}
 .marq.rev .row{animation-direction:reverse;animation-duration:80s}
 .marq:hover .row{animation-play-state:paused}
-.tile{flex:none;width:176px;height:96px;display:grid;place-items:center;padding:16px 22px;background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .25s,box-shadow .25s,transform .25s}
-.tile img{max-width:100%;max-height:56px;width:auto;height:auto;object-fit:contain}
-.tile.sq img{max-height:68px}
+.tile{flex:none;width:148px;height:80px;display:grid;place-items:center;padding:12px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;transition:border-color .25s,box-shadow .25s,transform .25s}
+.tile img{max-width:100%;max-height:44px;width:auto;height:auto;object-fit:contain}
+.tile.sq img{max-height:54px}
 .tile.dk{background:var(--ink);border-color:var(--ink)}
 .tile.dk.bk{background:#000;border-color:#000}
 .tile:hover{border-color:#f3c9a8;box-shadow:0 14px 30px -18px rgba(150,70,0,.45);transform:translateY(-2px)}
@@ -301,7 +301,7 @@ h3{font-size:24px}
 .hero .cta .btn{padding:0 12px;font-size:15px}
 .stage-card{margin-top:36px;border-radius:18px;box-shadow:0 24px 50px -24px rgba(120,50,0,.35)}
 .trust{padding:40px 0 8px}
-.tile{width:136px;height:76px;padding:12px 16px;border-radius:12px}.tile img{max-height:44px}.tile.sq img{max-height:54px}
+.tile{width:112px;height:62px;padding:9px 12px;border-radius:11px}.tile img{max-height:34px}.tile.sq img{max-height:42px}
 .feat{padding-top:24px}
 .fgrid2{margin-top:32px;gap:12px}
 .bento{grid-template-rows:repeat(3,96px);gap:8px}
@@ -524,7 +524,7 @@ const exp=[["Founder & CEO, Sihakuru","Leading creative direction across brandin
 const skills=["Brand identity","Graphic design","Creative direction","Motion graphics","Video editing","Cinematography","Photography","Social media"];
 const vens=[["Stories by Harshana","Photography and film: people, places and moments.","linear-gradient(135deg,#ec4d6c,#f79a1e,#ec4d6c)"],["RawTrails by Harshana","Hikes, camps and random adventures across Sri Lanka.","linear-gradient(135deg,#2f7f75,#cfe2b8,#2f7f75)"],["Concert reels","Live music and event reels, on camera and mobile.","linear-gradient(135deg,#1b3b6f,#ec4d6c,#1b3b6f)"]];
 
-const tile=([f,n,d])=>{const t=n.replace(/&/g,"&amp;");return `<div class="tile${d?" dk":""}${d===2?" bk":""}${SQ.has(f)?" sq":""}" title="${t}"><img src="/assets/clients/${f}.webp" alt="${t}" width="176" height="96" loading="lazy" decoding="async"></div>`};
+const tile=([f,n,d])=>{const t=n.replace(/&/g,"&amp;");return `<div class="tile${d?" dk":""}${d===2?" bk":""}${SQ.has(f)?" sq":""}" title="${t}"><img src="/assets/clients/${f}.webp" alt="${t}" width="148" height="80" loading="lazy" decoding="async"></div>`};
 {const h=Math.ceil(marq.length/2),a=marq.slice(0,h),b=marq.slice(h);$("#m1").innerHTML=[...a,...a].map(tile).join("");$("#m2").innerHTML=[...b,...b].map(tile).join("")}
 const sw=`<span class="sw"><u style="background:#ec4d6c"></u><u style="background:#f0402b"></u><u style="background:#f79a1e"></u><u style="background:#f6dd3c"></u><u style="background:#14110e"></u></span>`;
 const RP="M1300 60 C 700 120, 300 260, 520 560 S 1180 820, 900 1180 S 120 1380, 380 1760 S 1150 2050, 820 2420 S 200 2700, -100 2940";
