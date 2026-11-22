@@ -304,10 +304,14 @@ footer a:hover{color:var(--ink)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .chips span{padding:10px 14px;border-radius:12px;border:1px solid var(--line);font-weight:500}
 .vens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
-.ven{padding:24px;border:1px solid var(--line);border-radius:20px}
-.ven i{display:block;width:44px;height:44px;border-radius:12px;margin-bottom:18px;background:var(--c);background-size:200% 200%;animation:drift 6s ease-in-out infinite}
-.ven h4{margin:0;font:600 19px Geist,Inter,system-ui,sans-serif}
-.ven p{color:var(--mut);margin-top:6px;font-size:15px}
+.ven{display:grid;grid-template-columns:80px minmax(0,1fr);column-gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.ven img{grid-row:span 2;width:80px;height:80px;object-fit:cover;border-radius:14px;background:#14110e}
+.ven h4{align-self:end;margin:0;font:600 17px Geist,Inter,system-ui,sans-serif}
+.ven p{align-self:start;color:var(--mut);margin-top:2px;font-size:14px;line-height:1.45}
+.vsoc{grid-column:1/-1;display:flex;gap:8px;padding-top:14px}
+.vsoc a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border:1px solid var(--line);border-radius:12px;font-weight:600;font-size:14px;transition:background .2s,border-color .2s}
+.vsoc a:hover{background:var(--soft);border-color:#e6d6c4}
+.vsoc svg{width:16px;height:16px;fill:currentColor}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);visibility:hidden;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;transition:transform .3s,visibility .3s;z-index:50}
 .toast.on{transform:translate(-50%,0);visibility:visible}
 @media(max-width:900px){.links,.nav .btn{display:none}.menu{display:block}.links.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;padding:8px;border-radius:16px;background:rgba(20,17,14,.96)}.links.open a{padding:14px}.logos{grid-template-columns:repeat(3,minmax(0,1fr))}.sc{position:relative;top:auto!important}.vens{grid-template-columns:minmax(0,1fr)}}
@@ -586,7 +590,7 @@ const stages=[
 ];
 const exp=[["Founder & CEO, Sihakuru","Leading creative direction across branding, film, photography and social media.","Now"],["Founder, Sihakuru Labs","Commercials, hotel promos, reels and social media management.","Now"],["Graphic Designer","Visual content for social media, campaigns, events and print.","2024 – now"],["BSc in Information Technology","Specialised in Interactive Media.","Degree"]];
 const skills=["Brand identity","Graphic design","Creative direction","Motion graphics","Video editing","Cinematography","Photography","Social media"];
-const vens=[["Stories by Harshana","Photography and film: people, places and moments.","linear-gradient(135deg,#ec4d6c,#f79a1e,#ec4d6c)"],["RawTrails by Harshana","Hikes, camps and random adventures across Sri Lanka.","linear-gradient(135deg,#2f7f75,#cfe2b8,#2f7f75)"],["Concert reels","Live music and event reels, on camera and mobile.","linear-gradient(135deg,#1b3b6f,#ec4d6c,#1b3b6f)"]];
+const vens=[["Stories by Harshana","Photography and film: people, places and moments.","stories","https://www.facebook.com/StoriesbyHarshana","https://www.instagram.com/storiesbyharshana/"],["RawTrails by Harshana","Hikes, camps and random adventures across Sri Lanka.","rawtrails","https://www.facebook.com/RawTrailsByHarshana","https://www.instagram.com/rawtrailsbyharshana/"],["Concert.Storiez","Live music and event reels, on camera and mobile.","concert","https://www.facebook.com/Concert.Storiez","https://www.instagram.com/concert.storiez/"]];
 
 const ctile=([f,n,d])=>{const t=n.replace(/&/g,"&amp;");return `<div class="ct${d?" dk":""}${d===2?" bk":""}${SQ.has(f)?" sq":""}" title="${t}"><img src="/assets/clients/${f}.webp" alt="${t}" width="148" height="80" loading="lazy" decoding="async"></div>`};
 {const h=Math.ceil(marq.length/2),a=marq.slice(0,h),b=marq.slice(h);$("#m1").innerHTML=[...a,...a].map(ctile).join("");$("#m2").innerHTML=[...b,...b].map(ctile).join("")}
@@ -607,7 +611,8 @@ $("#allLabs").innerHTML=cases.map(labCard).join("");
 $("#stats").innerHTML=[[logos.length,"+","Brand identities built"],[cases.length,"+","Labs clients"],[2,"","Divisions, one team"],[1,"","Point of contact"]].map(s=>`<div class="stat"><b data-n="${s[0]}" data-s="${s[1]}">${s[0]}${s[1]}</b><span>${s[2]}</span></div>`).join("");
 $("#exp").innerHTML=exp.map(e=>`<div><div><b>${e[0]}</b><p>${e[1]}</p></div><span>${e[2]}</span></div>`).join("");
 $("#skills").innerHTML=skills.map(s=>`<span>${s}</span>`).join("");
-$("#vens").innerHTML=vens.map(v=>`<div class="ven"><i style="--c:${v[2]}"></i><h4>${v[0]}</h4><p>${v[1]}</p></div>`).join("");
+const FB='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v7h4v-7h3l1-4h-4V8z"/></svg>',IG='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2"/></svg>';
+$("#vens").innerHTML=vens.map(v=>`<div class="ven"><img src="/assets/vens/${v[2]}.webp" alt="${v[0]}" width="80" height="80" loading="lazy" decoding="async"><h4>${v[0]}</h4><p>${v[1]}</p><div class="vsoc"><a href="${v[3]}" target="_blank" rel="noopener" aria-label="${v[0]} on Facebook">${FB}Facebook</a><a href="${v[4]}" target="_blank" rel="noopener" aria-label="${v[0]} on Instagram">${IG}Instagram</a></div></div>`).join("");
 $("#yr").textContent=new Date().getFullYear();
 
 /* hero video */
