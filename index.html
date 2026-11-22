@@ -198,7 +198,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(hover:hover){.sc:hover{translate:0 -4px;box-shadow:0 22px 40px -26px rgba(120,50,0,.4)}}
 .sc>div:first-child{padding:0 12px}
 .sc>.vis{order:-1;min-height:210px;margin-bottom:22px}
-.sc .flip{width:min(62%,150px)}.sc .ph{width:64px}.sc .ph:nth-child(2){width:76px}.sc .cal{gap:6px;width:min(82%,250px)}
+.sc .flip{width:min(62%,150px)}.sc .ph{width:80px}.sc .ph:nth-child(2){width:96px}.sc .cal{gap:6px;width:min(82%,250px)}
 .sc h3{font-size:clamp(24px,2.3vw,30px)}
 .sc p{color:var(--mut);margin-top:10px;font-size:15.5px}
 .sc ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:7px}
@@ -214,6 +214,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .phones{display:flex;gap:14px;align-items:center}
 .ph{width:clamp(78px,8vw,110px);aspect-ratio:9/16;border-radius:16px;border:3px solid #fff;overflow:hidden;position:relative;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);animation:bob 5s ease-in-out infinite}
 .ph:nth-child(2){transform:translateY(-14px);animation-delay:-2.5s;width:clamp(92px,9.5vw,128px)}
+.ph{display:block;background:#222}.ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .ph i{position:absolute;inset:0;background:var(--gg);background-size:100% 300%;animation:roll 6s ease-in-out infinite}
 .ph b{position:absolute;left:50%;top:50%;translate:-40% -50%;border-left:14px solid #fff;border-block:9px solid transparent}
 @keyframes roll{50%{background-position:0 100%}}
@@ -455,7 +456,7 @@ footer{padding:40px 0 28px}
   <div class="c"><span class="pill plain">Why Sihakuru</span><h2 style="margin-top:20px">Brand, content and care.<br><span class="g">All under one roof.</span></h2><p class="lead">Built around three things every growing brand needs.</p></div>
   <div class="sys">
    <article class="sc"><div><h3>The Right <span class="g">Brand</span></h3><p>Sihakuru designs identities that feel like they've always belonged to you, and work everywhere from a shop sign to a reel.</p><ul><li>Logo &amp; brand identity</li><li>Brand guidelines</li><li>Menus, packaging &amp; print</li><li>Rebrands</li></ul></div><div class="vis"><div class="flip" id="flip"></div></div></article>
-   <article class="sc"><div><h3>The Right <span class="g">Content</span></h3><p>Sihakuru Labs shoots and edits the film and photography that bring your brand to life.</p><ul><li>Commercials &amp; promo videos</li><li>Hotel &amp; resort photography</li><li>Reels &amp; short-form video</li><li>Motion graphics</li></ul></div><div class="vis d"><div class="phones"><div class="ph" style="--gg:linear-gradient(180deg,#2f7f75,#0f2f33,#cfe2b8)"><i></i><b></b></div><div class="ph" style="--gg:linear-gradient(180deg,#f79a1e,#7a1e12,#f6dd3c)"><i></i><b></b></div><div class="ph" style="--gg:linear-gradient(180deg,#4f86c6,#152f5c,#f2d16b)"><i></i><b></b></div></div></div></article>
+   <article class="sc"><div><h3>The Right <span class="g">Content</span></h3><p>Sihakuru Labs shoots and edits the film and photography that bring your brand to life.</p><ul><li>Commercials &amp; promo videos</li><li>Hotel &amp; resort photography</li><li>Reels &amp; short-form video</li><li>Motion graphics</li></ul></div><div class="vis d"><div class="phones"><a class="ph" href="https://portfolio.sihakuru.com" target="_blank" rel="noopener" aria-label="Saludiya Retreat reel"><video src="/assets/reels/saludiya.mp4" poster="/assets/reels/saludiya.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a><a class="ph" href="https://portfolio.sihakuru.com" target="_blank" rel="noopener" aria-label="O2 Resort reel"><video src="/assets/reels/escape.mp4" poster="/assets/reels/escape.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a><a class="ph" href="https://portfolio.sihakuru.com" target="_blank" rel="noopener" aria-label="Sky Cafe reel"><video src="/assets/reels/sky.mp4" poster="/assets/reels/sky.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a></div></div></article>
    <article class="sc"><div><h3>The Right <span class="g">Care</span></h3><p>Monthly social media management that keeps your brand showing up, consistently and on time.</p><ul><li>Content planning</li><li>Design &amp; posting</li><li>Page management</li><li>Monthly reporting</li></ul></div><div class="vis d"><div class="cal" id="cal"></div></div></article>
   </div>
   <div class="sysdots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
@@ -646,6 +647,7 @@ if(rLite&&rpEl){const g=document.querySelector("#ribsvg g[mask]");g&&g.removeAtt
 const rDraw=p=>{if(rLite){const o=(rlen*(1-p)).toFixed(1);rpEl.style.strokeDashoffset=o;if(rCore)rCore.style.strokeDashoffset=o}else rmp.setAttribute("stroke-dashoffset",(1000*(1-p)).toFixed(1));const pt=rpEl.getPointAtLength(rlen*p);pen.style.transform=`translate3d(${(pt.x*rW/1200).toFixed(1)}px,${(pt.y*rH/3000).toFixed(1)}px,0)`;pen.style.opacity=p>.001&&p<.999?1:0};
 const rStep=()=>{rNow=rNow<0?rTo:rNow+(rTo-rNow)*.18;if(Math.abs(rTo-rNow)<.0004)rNow=rTo;rDraw(rNow);if(rNow!==rTo)requestAnimationFrame(rStep);else rLoop=0};
 const card=$(".stage-card"),scs=[];
+{const vs=[...document.querySelectorAll(".phones video")];if(vs.length&&"IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload="auto";const p=v.play();p&&p.catch&&p.catch(()=>{})}else v.pause()}),{threshold:.25});vs.forEach(v=>io.observe(v))}}
 {const sy=$(".sys"),dots=[...document.querySelectorAll(".sysdots i")];if(sy)sy.addEventListener("scroll",()=>{const cs=[...sy.children];let k=0,best=1e9;cs.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-sy.scrollLeft-(sy.clientWidth-c.offsetWidth)/2);if(d<best){best=d;k=i}});dots.forEach((d,i)=>d.classList.toggle("on",i===k))},{passive:true})}
 const still=document.documentElement.classList.contains("calm");
 const tick=()=>{const vh=innerHeight;
