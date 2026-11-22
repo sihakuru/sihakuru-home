@@ -299,6 +299,7 @@ footer a:hover{color:var(--ink)}
 .rows>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
 .rows b{font:600 clamp(18px,1.8vw,22px) Geist,Inter,system-ui,sans-serif;letter-spacing:-.02em;display:block}
 .rows p{color:var(--mut);margin-top:4px;font-size:15px}
+.rows b a{text-decoration:underline;text-decoration-color:#f0b37a;text-underline-offset:3px}.rows b a:hover{color:#c25a07}
 .rows span{color:var(--mut);font-size:14px;white-space:nowrap}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,80px)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -498,11 +499,11 @@ footer{padding:40px 0 28px}
  <section class="fhero c"><div class="wrap">
   <div class="av"><img src="/assets/harshana.webp" alt="Harshana Rajapaksha" width="480" height="480" decoding="async"></div>
   <h2>Harshana Rajapaksha<br><span class="g">Founder &amp; CEO, Sihakuru</span></h2>
-  <p class="lead">Graphic designer, filmmaker and visual storyteller, building brands and the stories that sell them.</p>
+  <p class="lead">Creative designer, filmmaker and visual storyteller, building brands and the stories that sell them.</p>
   <div class="cta"><button class="btn hot" id="copy" type="button">Copy profile link</button><a class="btn" href="https://wa.me/94772617756">WhatsApp</a><a class="btn" href="https://instagram.com/rajapaksha_h_">Instagram <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
  </div></section>
  <section class="band" style="padding-top:40px"><div class="wrap two">
-  <div><span class="pill plain">Background</span><h2 style="margin-top:20px;font-size:clamp(30px,3.6vw,46px)">Design, film<br><span class="g">and everything between.</span></h2><p class="mut" style="margin-top:18px;max-width:46ch">I came to design through interactive media and stayed for the moment a brand clicks. Today I lead creative direction at Sihakuru, and still sketch the logos and hold the camera myself.</p><div class="chips" id="skills"></div></div>
+  <div><span class="pill plain">Background</span><h2 style="margin-top:20px;font-size:clamp(30px,3.6vw,46px)">Design, film<br><span class="g">and everything between.</span></h2><p class="mut" style="margin-top:18px;max-width:46ch">With a background in interactive media, Harshana brings design, film and storytelling together in every project. As Founder and CEO of Sihakuru, he leads the creative direction behind each brand identity, commercial and content programme the studio delivers.</p><div class="chips" id="skills"></div></div>
   <div class="rows" id="exp" style="margin-top:0"></div>
  </div></section>
  <section class="band" style="padding-top:0"><div class="wrap">
@@ -588,7 +589,7 @@ const stages=[
  {id:"launch",t:"Launch",h:"Go live together",p:"We roll the brand out everywhere at once, so the first impression is a consistent one.",tools:["Instagram","Facebook","Print"],ui:[["insta","Instagram","Launch post scheduled"],["page","Facebook page","Cover & profile updated"],["printer","Print","Menus sent to printer"]],tag:"Launch week"},
  {id:"grow",t:"Grow",h:"Keep it moving",p:"Monthly social media care keeps your brand showing up, with fresh content and a clear plan every month.",tools:["Content plan","Posting","Monthly report"],ui:[["calendar","Content plan","Next month ready"],["play","Reels calendar","8 reels planned"],["chart","Monthly report","Sent to client"]],tag:"Every month"}
 ];
-const exp=[["Founder & CEO, Sihakuru","Leading creative direction across branding, film, photography and social media.","Now"],["Founder, Sihakuru Labs","Commercials, hotel promos, reels and social media management.","Now"],["Graphic Designer","Visual content for social media, campaigns, events and print.","2024 – now"],["BSc in Information Technology","Specialised in Interactive Media.","Degree"]];
+const exp=[["Founder & CEO, Sihakuru","Leading creative direction across branding, film, photography and social media.","Now"],["Founder, Sihakuru Labs","Commercials, hotel promos, reels and social media management.","Now"],["Creative Designer, <a href=\"https://www.wiasystems.com/\" target=\"_blank\" rel=\"noopener\">WIA Systems</a>","Visual content for social media, campaigns, events and print.","2024 – now"],["BSc in Information Technology","Specialised in Interactive Media.","Degree"]];
 const skills=["Brand identity","Graphic design","Creative direction","Motion graphics","Video editing","Cinematography","Photography","Social media"];
 const vens=[["Stories by Harshana","Photography and film: people, places and moments.","stories","https://www.facebook.com/StoriesbyHarshana","https://www.instagram.com/storiesbyharshana/"],["RawTrails by Harshana","Hikes, camps and random adventures across Sri Lanka.","rawtrails","https://www.facebook.com/RawTrailsByHarshana","https://www.instagram.com/rawtrailsbyharshana/"],["Concert.Storiez","Live music and event reels, on camera and mobile.","concert","https://www.facebook.com/Concert.Storiez","https://www.instagram.com/concert.storiez/"]];
 
