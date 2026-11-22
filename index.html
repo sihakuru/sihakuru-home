@@ -193,13 +193,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .tabs a.on{color:var(--ink);background:var(--soft)}
 .tabs a.on::after{content:"";position:absolute;left:16px;right:16px;bottom:4px;height:2px;border-radius:2px;background:var(--grad)}
 /* system cards */
-.sys{display:grid;gap:24px;margin-top:56px}
-.sc{position:sticky;top:96px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding:clamp(24px,4vw,48px);border:1px solid var(--line);border-radius:28px;background:#fff;box-shadow:0 -10px 40px -24px rgba(20,17,14,.25)}
-.sc:nth-child(2){top:116px}.sc:nth-child(3){top:136px}
-.sc h3{font-size:clamp(30px,3.4vw,44px)}
-.sc p{color:var(--mut);margin-top:14px;font-size:17px}
-.sc ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
-.sc li{display:flex;gap:10px;align-items:center;font-weight:500}
+.sys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.sc{position:relative;display:flex;flex-direction:column;padding:12px 12px 26px;border:1px solid var(--line);border-radius:24px;background:#fff;transition:translate .35s,box-shadow .35s}
+.sc:hover{translate:0 -4px;box-shadow:0 22px 40px -26px rgba(120,50,0,.4)}
+.sc>div:first-child{padding:0 12px}
+.sc>.vis{order:-1;min-height:210px;margin-bottom:22px}
+.sc .flip{width:min(62%,150px)}.sc .ph{width:64px}.sc .ph:nth-child(2){width:76px}.sc .cal{gap:6px;width:min(82%,250px)}
+.sc h3{font-size:clamp(24px,2.3vw,30px)}
+.sc p{color:var(--mut);margin-top:10px;font-size:15.5px}
+.sc ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:7px}
+.sc li{display:flex;gap:10px;align-items:center;font-weight:500;font-size:15px}
+.sysdots{display:none;justify-content:center;gap:6px;margin-top:14px}.sysdots i{width:7px;height:7px;border-radius:9px;background:#e6ddd3;transition:width .3s,background .3s}.sysdots i.on{width:22px;background:var(--grad)}
 .sc li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px #fff1e0}
 .vis{border-radius:20px;min-height:300px;position:relative;overflow:hidden;background:var(--grad);isolation:isolate;display:grid;place-items:center}
 .vis::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.5;z-index:-1}
@@ -341,11 +345,14 @@ h3{font-size:24px}
 .ui .k{padding:12px 14px;gap:12px;border-radius:14px;border-color:#e2d9cf;animation:none}
 .ui .k:nth-child(2){margin-left:0}
 .ui .k>i{width:36px;height:36px}
-.sys{margin-top:36px;gap:16px}
-.sc{padding:22px;border-radius:22px;gap:20px}
-.sc h3{font-size:28px}
-.sc p{font-size:16px}
+.sys{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:28px -18px 0;padding:0 18px 4px;scrollbar-width:none}.sys::-webkit-scrollbar{display:none}
+.sc{flex:0 0 84%;scroll-snap-align:center;padding:10px 10px 22px;border-radius:20px}
+.sc>div:first-child{padding:0 8px}
+.sc>.vis{min-height:170px;margin-bottom:18px}
+.sc h3{font-size:24px}
+.sc p{font-size:15px}
 .vis{min-height:220px;border-radius:16px}
+.sysdots{display:flex}
 .sub{margin:40px 0 16px}
 .sub h3{font-size:22px}
 .logos{gap:12px}
@@ -435,6 +442,7 @@ footer{padding:40px 0 28px}
    <article class="sc"><div><h3>The Right <span class="g">Content</span></h3><p>Sihakuru Labs shoots and edits the film and photography that bring your brand to life.</p><ul><li>Commercials &amp; promo videos</li><li>Hotel &amp; resort photography</li><li>Reels &amp; short-form video</li><li>Motion graphics</li></ul></div><div class="vis d"><div class="phones"><div class="ph" style="--gg:linear-gradient(180deg,#2f7f75,#0f2f33,#cfe2b8)"><i></i><b></b></div><div class="ph" style="--gg:linear-gradient(180deg,#f79a1e,#7a1e12,#f6dd3c)"><i></i><b></b></div><div class="ph" style="--gg:linear-gradient(180deg,#4f86c6,#152f5c,#f2d16b)"><i></i><b></b></div></div></div></article>
    <article class="sc"><div><h3>The Right <span class="g">Care</span></h3><p>Monthly social media management that keeps your brand showing up, consistently and on time.</p><ul><li>Content planning</li><li>Design &amp; posting</li><li>Page management</li><li>Monthly reporting</li></ul></div><div class="vis d"><div class="cal" id="cal"></div></div></article>
   </div>
+  <div class="sysdots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
  </div></section>
 
  <section class="band" id="work" style="padding-top:0"><div class="wrap">
@@ -622,7 +630,8 @@ const rCore=document.querySelector("#ribsvg .core");
 if(rLite&&rpEl){const g=document.querySelector("#ribsvg g[mask]");g&&g.removeAttribute("mask");document.querySelectorAll("#ribsvg .run").forEach(e=>e.remove());[rpEl,rCore].forEach(e=>{if(e){e.style.strokeDasharray=`${rlen} ${rlen}`;e.style.strokeDashoffset=rlen}})}
 const rDraw=p=>{if(rLite){const o=(rlen*(1-p)).toFixed(1);rpEl.style.strokeDashoffset=o;if(rCore)rCore.style.strokeDashoffset=o}else rmp.setAttribute("stroke-dashoffset",(1000*(1-p)).toFixed(1));const pt=rpEl.getPointAtLength(rlen*p);pen.style.transform=`translate3d(${(pt.x*rW/1200).toFixed(1)}px,${(pt.y*rH/3000).toFixed(1)}px,0)`;pen.style.opacity=p>.001&&p<.999?1:0};
 const rStep=()=>{rNow=rNow<0?rTo:rNow+(rTo-rNow)*.18;if(Math.abs(rTo-rNow)<.0004)rNow=rTo;rDraw(rNow);if(rNow!==rTo)requestAnimationFrame(rStep);else rLoop=0};
-const card=$(".stage-card"),scs=[...document.querySelectorAll(".sys .sc")];
+const card=$(".stage-card"),scs=[];
+{const sy=$(".sys"),dots=[...document.querySelectorAll(".sysdots i")];if(sy)sy.addEventListener("scroll",()=>{const cs=[...sy.children];let k=0,best=1e9;cs.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-sy.scrollLeft-(sy.clientWidth-c.offsetWidth)/2);if(d<best){best=d;k=i}});dots.forEach((d,i)=>d.classList.toggle("on",i===k))},{passive:true})}
 const still=document.documentElement.classList.contains("calm");
 const tick=()=>{const vh=innerHeight;
  if(!still&&card&&$("#home").classList.contains("on")){const r=card.getBoundingClientRect();const p=clamp((vh-r.top)/(vh*.9));card.style.transform=`scale(${(.9+.1*p).toFixed(4)})`}
