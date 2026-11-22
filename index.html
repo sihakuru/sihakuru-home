@@ -142,7 +142,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .ribbon .base{fill:none;stroke:#fdebd6;stroke-width:26;stroke-linecap:round}
 .ribbon .edge{fill:none;stroke:#f9d3a8;stroke-width:1.5}
 .ribbon .core{fill:none;stroke:url(#rg);stroke-width:2;opacity:.75}
-.pen{position:absolute;left:0;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#f79a1e;box-shadow:0 0 0 4px rgba(247,154,30,.25),0 0 18px 4px rgba(240,64,43,.45);pointer-events:none;opacity:0;transition:opacity .3s;animation:penp 1.6s ease-in-out infinite;z-index:0}
+.pen{position:absolute;left:0;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#f79a1e;box-shadow:0 0 0 4px rgba(247,154,30,.25),0 0 18px 4px rgba(240,64,43,.45);pointer-events:none;opacity:0;will-change:transform;transition:opacity .3s;animation:penp 1.6s ease-in-out infinite;z-index:0}
 @keyframes penp{50%{opacity:.55}}
 .ribbon .run{fill:none;stroke:url(#rg);stroke-width:3;stroke-linecap:round;stroke-dasharray:140 1600;animation:run 9s linear infinite}
 @keyframes run{to{stroke-dashoffset:-1740}}
@@ -557,17 +557,24 @@ markRV(document);
 /* scroll-linked motion */
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const rmp=$("#rmp"),pen=$("#pen"),rpEl=$("#rp"),stg=$("#stages");const rlen=rpEl?rpEl.getTotalLength():0;
+/* ribbon: eased progress drawn once per frame. On phones/touch the SVG mask and the looping dashes repaint the whole tall SVG every frame (the stutter), so there the line is revealed with a plain stroke dash and the loops are dropped. */
+const rLite=matchMedia("(max-width:900px),(pointer:coarse)").matches;
+let rTo=0,rNow=-1,rLoop=0,rW=0,rH=0;const rSize=()=>{if(stg){rW=stg.clientWidth;rH=stg.clientHeight}};rSize();
+const rCore=document.querySelector("#ribsvg .core");
+if(rLite&&rpEl){const g=document.querySelector("#ribsvg g[mask]");g&&g.removeAttribute("mask");document.querySelectorAll("#ribsvg .run").forEach(e=>e.remove());[rpEl,rCore].forEach(e=>{if(e){e.style.strokeDasharray=`${rlen} ${rlen}`;e.style.strokeDashoffset=rlen}})}
+const rDraw=p=>{if(rLite){const o=(rlen*(1-p)).toFixed(1);rpEl.style.strokeDashoffset=o;if(rCore)rCore.style.strokeDashoffset=o}else rmp.setAttribute("stroke-dashoffset",(1000*(1-p)).toFixed(1));const pt=rpEl.getPointAtLength(rlen*p);pen.style.transform=`translate3d(${(pt.x*rW/1200).toFixed(1)}px,${(pt.y*rH/3000).toFixed(1)}px,0)`;pen.style.opacity=p>.001&&p<.999?1:0};
+const rStep=()=>{rNow=rNow<0?rTo:rNow+(rTo-rNow)*.18;if(Math.abs(rTo-rNow)<.0004)rNow=rTo;rDraw(rNow);if(rNow!==rTo)requestAnimationFrame(rStep);else rLoop=0};
 const card=$(".stage-card"),scs=[...document.querySelectorAll(".sys .sc")];
 const still=document.documentElement.classList.contains("calm");
 const tick=()=>{const vh=innerHeight;
  if(!still&&card&&$("#home").classList.contains("on")){const r=card.getBoundingClientRect();const p=clamp((vh-r.top)/(vh*.9));card.style.transform=`scale(${(.9+.1*p).toFixed(4)})`}
- if(stg&&rmp){const r=stg.getBoundingClientRect();const p=clamp((vh*.62-r.top)/r.height);rmp.setAttribute("stroke-dashoffset",(1000*(1-p)).toFixed(1));const pt=rpEl.getPointAtLength(rlen*p);pen.style.transform=`translate(${(pt.x*stg.clientWidth/1200).toFixed(1)}px,${(pt.y*stg.clientHeight/3000).toFixed(1)}px)`;pen.style.opacity=p>0&&p<1?1:0}
+ if(stg&&rmp){const r=stg.getBoundingClientRect();rTo=clamp((vh*.62-r.top)/r.height);if(!rLoop){rLoop=1;requestAnimationFrame(rStep)}}
  if(!still&&innerWidth>900)scs.forEach((c,i)=>{const n=scs[i+1];if(!n){c.style.transform="";return}const a=c.getBoundingClientRect(),b=n.getBoundingClientRect();const p=clamp(1-(b.top-a.top)/a.height);c.style.transform=`scale(${(1-.06*p).toFixed(4)})`;c.style.filter=`brightness(${(1-.12*p).toFixed(3)})`});
 };
 let lenis=null;
 if(!still&&window.Lenis){lenis=new Lenis({lerp:.09,smoothWheel:true,wheelMultiplier:1});lenis.on("scroll",tick);const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
 else addEventListener("scroll",tick,{passive:true});
-addEventListener("resize",tick);tick();
+addEventListener("resize",()=>{rSize();tick()});tick();
 window.__sk={lenis,tick,markRV};
 document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute("href").slice(1);const el=id&&document.getElementById(id);
  if(el&&$("#home").classList.contains("on")&&$("#home").contains(el)){e.preventDefault();history.replaceState(null,"",location.pathname);lenis?lenis.scrollTo(el,{offset:id==="top"?0:-90,duration:1.4}):el.scrollIntoView({behavior:"smooth"})}});
