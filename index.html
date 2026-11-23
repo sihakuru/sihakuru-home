@@ -108,6 +108,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .facts2 span{color:#9d958b;font-size:13px}
 .facts2 b{font-weight:600}
 .finfo .btn{margin-top:auto;align-self:flex-start}
+.ftrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;align-items:flex-start}
+.ftrack::-webkit-scrollbar{display:none}
+.fslide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+.fnav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:28px}
+.fbtn{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s}
+.fbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fbtn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -16px rgba(150,70,0,.5)}
+.fbtn:disabled{opacity:.35;cursor:default;transform:none;box-shadow:none}
+.fdots{display:flex;gap:8px}
+.fdots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:#d6c7b8;cursor:pointer;transition:width .3s,background .3s}
+.fdots button[aria-current="true"]{width:28px;background:var(--grad)}
 .bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(clamp(110px,11.5vw,150px),1fr));gap:10px}
 .bento figure{min-height:0}.bento figure>img{position:absolute;inset:0}
 .bento figure{margin:0;border-radius:18px;overflow:hidden;position:relative;background:#222}
@@ -440,6 +451,9 @@ footer{padding:40px 0 28px}
  </section>
 
  <section class="band feat" id="featured"><div class="wrap">
+ <div class="fslider" role="region" aria-roledescription="carousel" aria-label="Featured productions">
+  <div class="ftrack" id="ftrack">
+  <div class="fslide" role="group" aria-roledescription="slide" aria-label="Autoways">
   <div class="c"><span class="pill"><b><svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true"><path d="M7 4v16l13-8z" fill="currentColor"/></svg></b>Featured production · Sihakuru Labs</span><h2 style="margin-top:20px">Corporate commercial<br><span class="g">for Autoways (PVT) Ltd.</span></h2><p class="lead">On location with one of Sri Lanka's leaders in tyre rebuilding and manufacturing, filming the strength and precision behind their work.</p></div>
   <div class="fgrid2">
    <div class="finfo"><span class="live"><i></i>Behind the scenes</span><h3>From concept to execution, across the island.</h3>
@@ -454,6 +468,26 @@ footer{padding:40px 0 28px}
     <figure><img src="/assets/bts/aw/s6.webp" alt="Team with the Autoways client at Kuruwita"></figure>
    </div>
   </div>
+  </div>
+  <div class="fslide" role="group" aria-roledescription="slide" aria-label="Sky Cafe">
+  <div class="c"><span class="pill"><b><svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true"><path d="M7 4v16l13-8z" fill="currentColor"/></svg></b>Featured production · Sihakuru Labs</span><h2 style="margin-top:20px">Social media reels<br><span class="g">for Sky Cafe.</span></h2><p class="lead">A steady flow of reels that keeps the café's feed fresh and makes people hungry, shot quickly during service.</p></div>
+  <div class="fgrid2">
+   <div class="finfo"><span class="live"><i></i>Behind the scenes</span><h3>Quick shoots during service, made for the feed.</h3>
+    <ul class="facts2"><li><span>Project</span><b>Reels &amp; social content</b></li><li><span>Client</span><b>Sky Cafe</b></li><li><span>Industry</span><b>Café &amp; food</b></li><li><span>Format</span><b>Short-form reels</b></li></ul>
+    <a class="btn hot" href="#work-sky-cafe">See the full project</a></div>
+   <div class="bento">
+    <figure><img src="/assets/bts/sky/s8.webp" alt="Filming at the Sky Cafe counter with a gimbal" loading="lazy"><figcaption>Sky Cafe</figcaption></figure>
+    <figure><img src="/assets/bts/sky/s1.webp" alt="Shooting the dessert display" loading="lazy"></figure>
+    <figure><img src="/assets/bts/sky/s3.webp" alt="Filming a guest being served" loading="lazy"></figure>
+    <figure><img src="/assets/bts/sky/s7.webp" alt="Crew filming in the kitchen" loading="lazy"><figcaption>In the kitchen</figcaption></figure>
+    <figure><img src="/assets/bts/sky/s6.webp" alt="Shooting food prep at the counter" loading="lazy"></figure>
+    <figure><img src="/assets/bts/sky/s9.webp" alt="Editing setup on location" loading="lazy"></figure>
+   </div>
+  </div>
+  </div>
+  </div>
+  <div class="fnav"><button class="fbtn" id="fprev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div class="fdots" id="fdots"></div><button class="fbtn" id="fnext" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+ </div>
  </div></section>
 
  <section class="band" id="services" style="padding-top:0"><div class="wrap">
@@ -693,6 +727,22 @@ const route=()=>{let h=location.hash.slice(1);if(!h&&/^\/harshana\/?$/.test(loca
 };
 addEventListener("hashchange",route);route();
 }
+
+/* featured slider */
+(()=>{const t=document.getElementById("ftrack");if(!t)return;const sl=[...t.children],dots=document.getElementById("fdots"),pv=document.getElementById("fprev"),nx=document.getElementById("fnext");let cur=0,timer=null,user=false;
+sl.forEach((x,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Show "+x.getAttribute("aria-label"));b.onclick=()=>{stop();go(i)};dots.appendChild(b)});
+const go=i=>{i=(i+sl.length)%sl.length;t.scrollTo({left:sl[i].offsetLeft-t.offsetLeft,behavior:"smooth"})};
+const upd=()=>{cur=Math.round(t.scrollLeft/t.clientWidth);[...dots.children].forEach((b,i)=>b.setAttribute("aria-current",i===cur?"true":"false"))};
+t.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true});upd();
+const stop=()=>{user=true;clearInterval(timer);timer=null};
+pv.onclick=()=>{stop();go(cur-1)};nx.onclick=()=>{stop();go(cur+1)};
+["pointerdown","touchstart","wheel"].forEach(e=>t.addEventListener(e,stop,{passive:true}));
+if(sl.length<2){document.querySelector(".fnav").style.display="none";return}
+if(document.documentElement.classList.contains("calm"))return;
+const run=()=>{if(!user&&!timer)timer=setInterval(()=>go(cur+1),8000)};
+const sec=document.getElementById("featured");sec.addEventListener("mouseenter",()=>{clearInterval(timer);timer=null});sec.addEventListener("mouseleave",run);
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)run();else{clearInterval(timer);timer=null}}),{threshold:.35}).observe(sec);
+})();
 </script>
 </body>
 </html>
