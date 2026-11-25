@@ -108,9 +108,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .facts2 span{color:#9d958b;font-size:13px}
 .facts2 b{font-weight:600}
 .finfo .btn{margin-top:auto;align-self:flex-start}
-.ftrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;align-items:flex-start}
-.ftrack::-webkit-scrollbar{display:none}
-.fslide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+.fslider{overflow:hidden}
+.ftrack{display:flex;align-items:flex-start;touch-action:pan-y;transition:transform .65s cubic-bezier(.22,1,.36,1);will-change:transform}
+.ftrack.drag{transition:none}
+.calm .ftrack{transition:none}
+.fslide{flex:0 0 100%;min-width:0}
 .fnav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:28px}
 .fbtn{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s}
 .fbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
@@ -757,15 +759,22 @@ const route=()=>{let h=location.hash.slice(1);if(!h&&/^\/harshana\/?$/.test(loca
 addEventListener("hashchange",route);route();
 }
 
-/* featured slider */
+/* featured slider: transform-based so a vertical page scroll on phones can never nudge it sideways */
 (()=>{const t=document.getElementById("ftrack");if(!t)return;const sl=[...t.children],dots=document.getElementById("fdots"),pv=document.getElementById("fprev"),nx=document.getElementById("fnext");let cur=0,timer=null,user=false;
 sl.forEach((x,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Show "+x.getAttribute("aria-label"));b.onclick=()=>{stop();go(i)};dots.appendChild(b)});
-const go=i=>{i=(i+sl.length)%sl.length;t.scrollTo({left:sl[i].offsetLeft-t.offsetLeft,behavior:"smooth"})};
-const upd=()=>{cur=Math.round(t.scrollLeft/t.clientWidth);[...dots.children].forEach((b,i)=>b.setAttribute("aria-current",i===cur?"true":"false"))};
-t.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true});upd();
+const go=i=>{cur=(i+sl.length)%sl.length;t.style.transform=`translate3d(${-cur*100}%,0,0)`;sl.forEach((x,k)=>{x.inert=k!==cur;x.setAttribute("aria-hidden",k!==cur)});[...dots.children].forEach((b,k)=>b.setAttribute("aria-current",k===cur?"true":"false"))};
 const stop=()=>{user=true;clearInterval(timer);timer=null};
-pv.onclick=()=>{stop();go(cur-1)};nx.onclick=()=>{stop();go(cur+1)};
-["pointerdown","touchstart","wheel"].forEach(e=>t.addEventListener(e,stop,{passive:true}));
+pv.onclick=()=>{stop();go(cur-1)};nx.onclick=()=>{stop();go(cur+1)};go(0);
+/* touch: decide the axis first; only a clearly sideways swipe moves the slider, vertical drags stay a normal page scroll */
+let sx=0,sy=0,st=0,dx=0,ax=0;
+t.addEventListener("touchstart",e=>{const p=e.touches[0];sx=p.clientX;sy=p.clientY;st=Date.now();dx=0;ax=0},{passive:true});
+t.addEventListener("touchmove",e=>{const p=e.touches[0],mx=p.clientX-sx,my=p.clientY-sy;
+ if(!ax){if(Math.abs(mx)<8&&Math.abs(my)<8)return;ax=Math.abs(mx)>Math.abs(my)*1.2?1:2;if(ax===1){stop();t.classList.add("drag")}}
+ if(ax!==1)return;e.preventDefault();dx=mx;const w=t.clientWidth,edge=(cur===0&&dx>0)||(cur===sl.length-1&&dx<0);t.style.transform=`translate3d(${-cur*w+(edge?dx*.35:dx)}px,0,0)`},{passive:false});
+const end=()=>{if(ax!==1)return;ax=0;t.classList.remove("drag");const w=t.clientWidth,fast=Math.abs(dx)/Math.max(1,Date.now()-st)>.4;let n=cur;if(Math.abs(dx)>w*.18||(fast&&Math.abs(dx)>30))n=cur+(dx<0?1:-1);go(Math.max(0,Math.min(sl.length-1,n)))};
+t.addEventListener("touchend",end);t.addEventListener("touchcancel",end);
+/* trackpad sideways swipe on desktop */
+let wl=0;t.addEventListener("wheel",e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<25)return;e.preventDefault();const n=Date.now();if(n-wl<700)return;wl=n;stop();go(cur+(e.deltaX>0?1:-1))},{passive:false});
 if(sl.length<2){document.querySelector(".fnav").style.display="none";return}
 if(document.documentElement.classList.contains("calm"))return;
 const run=()=>{if(!user&&!timer)timer=setInterval(()=>go(cur+1),8000)};
